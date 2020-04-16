@@ -2,7 +2,7 @@
 layout: post
 title: Deep Neural Machine
 date: 2019-01-26 19:22
-summary: Pixyll is available to you under the MIT license.
+summary: Intelligence, Created.
 categories: jekyll pixyll
 ---
 
