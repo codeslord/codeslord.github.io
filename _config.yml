@@ -1,10 +1,10 @@
 # Site settings
 title:       Deep Neural Machine
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+email:       rohithrnair@outlook.com
+author:      Rohith R Nair
+description: "Creating the future isn't Magic. It's Artificial Intelligence"
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "http://codeslord.github.io"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
@@ -47,15 +47,15 @@ facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
-github_username:
+github_username:codeslord
 reddit_username:
 bitbucket_username:
-stackoverflow_id:
-twitter_username:
+stackoverflow_id:codeslord
+twitter_username:rohithrnair
 skype_username:
 steam_nickname:
 google_plus_id:
-linkedin_username:
+linkedin_username:rohithrnair
 angellist_username:
 medium_id:
 bitcoin_url:
