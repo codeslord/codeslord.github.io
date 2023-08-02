@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Diffusers for Image Generation with Language Prompts using Stable Diffusion XL
+title: Diffusers for Image Generation with Language Prompts using Stable Diffusion XL
 date: 2023-08-01 18:00
 summary: This tutorial demonstrates how to use the "Diffusers" library and a pre-trained DiffusionPipeline to generate images from text prompts. By leveraging the power of Stable Diffusion Dreambooth XL model, users can create images based on textual input.
 categories: General
