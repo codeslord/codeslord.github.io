@@ -76,6 +76,9 @@ share_tumblr: false
 share_reddit: true
 share_stumbleupon: false
 share_hackernews: false
+#buy me a coffee
+show_buymeacoffee: true
+buymeacoffee_username: rohithragh2
 
 text:
   pagination:

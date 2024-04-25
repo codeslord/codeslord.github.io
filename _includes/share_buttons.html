@@ -1,5 +1,20 @@
 <div class="share-page">
   {{ site.text.share_buttons.text | default: "Share this post!" }}
+  {% if site.show_buymeacoffee %}
+<!-- Buy Me a Coffee Button -->
+<div class="bmc-button-container">
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+        data-name="bmc-button"
+        data-slug="{{ site.buymeacoffee_username }}"
+        data-color="#FFDD00"
+        data-emoji=""
+        data-font="Comic"
+        data-text="Buy me a coffee"
+        data-outline-color="#000000"
+        data-font-color="#000000"
+        data-coffee-color="#ffffff"></script>
+  </div>
+  {% endif %}
 
   <div class="share-links">
     {% if site.share_facebook %}
