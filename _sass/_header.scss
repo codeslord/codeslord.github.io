@@ -5,9 +5,10 @@
   backdrop-filter: blur(5px); /* Glassmorphic blur effect */
   -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
-  border-radius: 16px; /* Rounded corners */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
+  // border-radius: 16px; /* Rounded corners */
+  // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
   text-align: center;
+  margin-bottom: 0; /* Remove any bottom margin */
 }
 
 .site-header a {
@@ -28,21 +29,30 @@
 
 .site-header nav a {
   color: $nav-color;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+  background: rgba(255, 255, 255, 0.2); /* Glassmorphic background */
+  backdrop-filter: blur(5px); /* Glassmorphic blur effect */
+  -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
+  padding: 0.5rem 1rem;
+  border-radius: 8px; /* Rounded corners */
+  margin: 0 0.5rem;
+  text-decoration: none; /* Remove underline */
+  transition: background 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
 }
 
 .site-header nav a:hover,
 .site-header nav a:focus,
-.site-header nav a:active,
-.site-header nav a.nav-active:hover,
-.site-header nav a.nav-active:focus,
-.site-header nav a.nav-active:active {
+.site-header nav a:active {
   color: $nav-link-color;
+  background: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
   opacity: 1;
-  border-bottom: $nav-link-border-bottom;
+  border-bottom: none; /* Ensure no underline on hover */
 }
 
 .site-header nav a.nav-active {
-  border-bottom: $nav-active-border-bottom;
+  border-bottom: none; /* Remove underline for active link */
 }
 
 .site-nav a + a {
@@ -55,4 +65,3 @@
 .posts .post a:hover .post-summary {
   opacity: 0.88;
 }
-

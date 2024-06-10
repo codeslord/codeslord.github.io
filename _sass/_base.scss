@@ -31,6 +31,8 @@ body {
           box-sizing: border-box;
      -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .profile {
@@ -65,6 +67,15 @@ body {
   background-repeat: no-repeat;
   z-index: -1; /* Ensure it is behind all other content */
   // filter: blur(5px); /* Optional: Add a blur effect */
+}
+
+/* Specific class for main content */
+.main-content .post {
+  margin: 0;
+  padding: 2%;
+  box-shadow: none; /* Ensure no box shadow */
+  border: none; /* Ensure no border */
+  border-radius: 0; /* Remove border radius */
 }
 
 
