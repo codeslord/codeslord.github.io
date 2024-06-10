@@ -1,15 +1,31 @@
-
 .post {
   position: relative;
   overflow: hidden;
+  margin-bottom: 2rem;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .post-overlay {
   position: relative;
   z-index: 1;
-  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.8);
   padding: 1rem;
 }
+
 
 .post::before {
   content: "";

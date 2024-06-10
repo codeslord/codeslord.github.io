@@ -7,10 +7,11 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
+        {% assign image_tag = post.content | split: '<img' | last %}
+        {% assign image_url = image_tag | split: 'src="' | last | split: '"' | first %}
         <div class="post py3" style="position: relative;">
-          {% assign image_url = post.content | split: '<img src="' | last | split: '"' | first %}
           {% if image_url %}
-          <div style="background: url('{{ image_url }}') no-repeat center center; background-size: cover; opacity: 0.3; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+            <div class="post-background" style="background-image: url('{{ image_url }}');"></div>
           {% endif %}
           <div class="post-overlay">
             <p class="post-meta">
