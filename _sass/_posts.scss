@@ -1,27 +1,41 @@
-
 .post {
   position: relative;
   overflow: hidden;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.2); /* Glassmorphic background */
+  border-radius: 16px; /* Glassmorphic rounded corners */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
+  backdrop-filter: blur(5px); /* Glassmorphic blur effect */
+  -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
+  padding: 2%; /* Ensure there is no padding */
 }
 
-// .post-overlay {
-//   position: relative;
-//   z-index: 1;
-//   background: rgba(255, 255, 255, 0.8);
-//   padding: 1rem;
-// }
+.post-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: opacity(0.3);
+  border-radius: 10px;
+  z-index: 0;
+}
 
-// .post::before {
-//   content: "";
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.3); /* Adjust the color and opacity as needed */
-//   z-index: 0;
-// }
-
+.post-overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(219, 209, 209, 0.2); /* Semi-transparent background */
+  border-radius: 16px; /* Match glassmorphic style */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Match glassmorphic style */
+  backdrop-filter: blur(5px); /* Apply blur to create frosted glass effect */
+  -webkit-backdrop-filter: blur(5px); /* Apply blur for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  padding: 1rem;
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
 
 .posts .post {
   margin-bottom: 0.75em;
@@ -31,13 +45,15 @@
 .posts .post:last-child {
   border-bottom: none;
   margin-bottom: .375em;
-  padding-bottom: 0;
+  // padding-bottom: 0;
 }
 
 .post-link .post-title {
   margin-top: 0;
   font-weight: 600;
   color: #333;
+  position: relative;
+  z-index: 2; /* Ensure link is above overlay */
 }
 
 .post-footer {

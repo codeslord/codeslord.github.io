@@ -5,7 +5,7 @@ permalink: /about/
 tags: about
 ---
 
-<img src="https://i.imgur.com/TOpq3qa.jpeg" alt="photo" border="0">
+<img src="https://i.imgur.com/TOpq3qa.jpeg" alt="photo" class="profile" border="0">
 
 Hi! I am an AI and Robotics engineer with a passion for using technology to make the world a better place. I believe that Robotics and artificial intelligence has the power to solve some of the most pressing problems facing humanity, from climate change and environmental degradation to healthcare and education. The future is now. We have the resources and tools today to rebuild a sustainable planet that works for all of us. I am excited about amazing discoveries and unexpected results made by the intelligence created by humans. I’m curious about the new knowledge we’ve gained and the potential it represents. AI will be an incredible part of human transformation.
 

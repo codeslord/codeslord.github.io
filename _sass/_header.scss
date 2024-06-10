@@ -1,6 +1,13 @@
 .site-header {
   padding-top: $space-1;
   padding-bottom: $space-2;
+  background: rgba(255, 255, 255, 0.2); /* Glassmorphic background */
+  backdrop-filter: blur(5px); /* Glassmorphic blur effect */
+  -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
+  text-align: center;
 }
 
 .site-header a {
@@ -16,6 +23,7 @@
 
 .site-nav {
   padding-top: $nav-padding;
+  text-align: center;
 }
 
 .site-header nav a {
@@ -48,10 +56,3 @@
   opacity: 0.88;
 }
 
-.site-header {
-  text-align: center;
-}
-
-.site-header .site-nav {
-  text-align: center;
-}

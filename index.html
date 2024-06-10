@@ -10,10 +10,11 @@ layout: default
         {% assign image_tag = post.content | split: '<img' | last %}
         {% assign image_url = image_tag | split: 'src="' | last | split: '"' | first %}
         <div class="post py3" style="position: relative;">
-          {% if image_url %}
+         
+          <div class="post-overlay">
+            {% if image_url %}
             <div class="post-background" style="background-image: url('{{ image_url }}');"></div>
           {% endif %}
-          <div class="post-overlay">
             <p class="post-meta">
               {% if site.date_format %}
                 {{ post.date | date: site.date_format }}

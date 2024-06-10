@@ -32,3 +32,42 @@ body {
      -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+.profile {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 200px; /* Ensure width and height are equal for a round image */
+  height: 200px; /* Ensure width and height are equal for a round image */
+}
+
+.home {
+  // background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.home::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/background.png');
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: -1; /* Ensure it is behind all other content */
+  // filter: blur(5px); /* Optional: Add a blur effect */
+}
+
+
+// <a href="https://ibb.co/Y2DPTb2"><img src="https://i.ibb.co/nr368Rr/background.png" alt="background" border="0"></a>
+// <a href="https://ibb.co/q5cFc3s"><img src="https://i.ibb.co/TL7q7x8/white-robot-background.webp" alt="white-robot-background" border="0"></a>
+// <a href="https://ibb.co/6W75QbW"><img src="https://i.ibb.co/HHfQZYH/background-robo.png" alt="background-robo" border="0"></a>
