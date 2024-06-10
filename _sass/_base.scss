@@ -35,13 +35,13 @@ body {
 
 .profile {
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   width: 200px; /* Ensure width and height are equal for a round image */
-  height: 200px; /* Ensure width and height are equal for a round image */
+  height: auto; /* Ensure width and height are equal for a round image */
 }
 
 .home {
