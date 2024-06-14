@@ -202,3 +202,5 @@ Testing the optimized pipeline confirms shorter, more precise answers.
 ### Conclusion
 
 By leveraging DSPy to optimize prompts in a Haystack RAG pipeline, we improved the performance by nearly 40% without manual prompt engineering. This approach allows for scalable and robust prompt optimization, enhancing the quality and efficiency of Gen-AI applications.
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcodeslord.github.io%2Fgeneral%2F2024%2F05%2F30%2FDSPy-haystack%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)

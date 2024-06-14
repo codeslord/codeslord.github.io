@@ -9,8 +9,6 @@ categories: General
 <img src="https://i.ibb.co/Br6L8P4/fillintheblanks.jpg" alt="fillintheblanks" border="0">
 
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcodeslord.github.io%2Fgeneral%2F2021%2F09%2F12%2Ffillintheblanks%2F&count_bg=%233D3EC8&title_bg=%2350DF31&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
 Natural Language Processing (NLP) is a rapidly growing field of Artificial Intelligence (AI) that focuses on the interaction between humans and computers using natural language. One of the most common tasks in NLP is fill-in-the-blank, where the goal is to predict missing words in a sentence. Fill-in-the-blank tasks have many applications in NLP, such as language modeling, question answering, sentiment analysis, and named entity recognition. Hugging Face Transformers is a popular Python library that provides pre-trained NLP models, including BERT, GPT and many others, and allows fine-tuning them on custom tasks. In this tutorial, we will explore how to use Hugging Face Transformers and BERT for fill-in-the-blank tasks in PyTorch. We will go step-by-step through the process of loading a pre-trained BERT model, tokenizing text, replacing a word with a [MASK] token, feeding the tokenized text into the BERT model, and obtaining the predicted word. By the end of this tutorial, you will have a solid understanding of how to use Hugging Face Transformers and BERT for fill-in-the-blank tasks in NLP.
 
 First, you will need to install the transformers library by running:
@@ -74,3 +72,4 @@ This will output a list of the top 5 predicted tokens for the missing word.
 
 And that't it!
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcodeslord.github.io%2Fgeneral%2F2021%2F09%2F12%2Ffillintheblanks%2F&count_bg=%233D3EC8&title_bg=%2350DF31&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
