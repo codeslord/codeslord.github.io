@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Machine Teaching - Part 1
+title: Machine Teaching Part 1 - Linear and Non-linear control
 date: 2024-06-02 11:00
 summary: Linear and Non Linear control policies.
 categories: General
