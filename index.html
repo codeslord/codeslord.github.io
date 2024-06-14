@@ -7,8 +7,19 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
-        {% assign image_tag = post.content | split: '<img' | last %}
-        {% assign image_url = image_tag | split: 'src="' | last | split: '"' | first %}
+        <!-- {% assign image_tag = post.content | split: '<img' | last %}
+        {% assign image_url = image_tag | split: 'src="' | last | split: '"' | first %} -->
+        {% assign image_tags = post.content | split: '<img ' %}
+        {% assign last_image_tag = "" %}
+
+        {% for tag in image_tags reversed %}
+          {% if tag contains 'src="' and tag contains '.jpg' or tag contains '.jpeg' or tag contains '.png' or tag contains '.webp' %}
+            {% assign last_image_tag = tag %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% assign image_url = last_image_tag | split: 'src="' | last | split: '"' | first %}
         <div class="post py3" style="position: relative;">
          
           <div class="post-overlay">
