@@ -6,7 +6,7 @@ summary: Linear and Non Linear control policies.
 categories: General
 ---
 
-<img src="https://i.ibb.co/3Npp9zt/control.jpg" alt="control" border="0">
+<img src="https://i.ibb.co/wQBqJnK/robot-arm.jpg" alt="robot-arm" border="0">
 
 ### Linear and Non-Linear Control Policies
 
