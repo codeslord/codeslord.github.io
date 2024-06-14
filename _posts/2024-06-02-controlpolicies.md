@@ -72,3 +72,77 @@ $$
 where $$ K $$ is learned using ridge regression. This approach provides a linear approximation of the non-linear control policy and includes regularization to prevent overfitting.
 
 While ridge regression is typically used in a learning context rather than a direct control policy, the model learned through ridge regression can inform a control policy by providing an approximation of the relationship between states and control actions.
+
+### Examples of Linear and Non-Linear Control Policies
+
+#### Linear Control Policies
+
+1. **Proportional-Derivative (PD) Control**
+   - **Application**: Position control of a motor
+   - **Control Law**:
+     $$
+     u = K_p (r - y) + K_d \left( \frac{d}{dt} (r - y) \right)
+     $$
+     where $$ u $$ is the control input (voltage to the motor), $$ r $$ is the reference position, $$ y $$ is the current position, $$ K_p $$ is the proportional gain, and $$ K_d $$ is the derivative gain.
+
+2. **Linear Quadratic Regulator (LQR)**
+   - **Application**: Stabilizing an inverted pendulum
+   - **Control Law**:
+     $$
+     u = -Kx
+     $$
+     where $$ u $$ is the control input (force applied), $$ K $$ is the feedback gain matrix, and $$ x $$ is the state vector (including angle and angular velocity).
+
+3. **State-Space Control**
+   - **Application**: Control of a multi-input multi-output (MIMO) system like a robotic arm
+   - **Control Law**:
+     $$
+     u = -Kx + Kr
+     $$
+     where $$ u $$ is the control input, $$ K $$ is the state feedback gain matrix, $$ x $$ is the state vector, and $$ r $$ is the reference input.
+
+#### Non-Linear Control Policies
+
+1. **Computed Torque Control (CTC)**
+   - **Application**: Control of a robotic manipulator
+   - **Control Law**:
+     $$
+     \tau = M(q) \ddot{q}_d + C(q, \dot{q}) \dot{q}_d + G(q)
+     $$
+     where $$ \tau $$ is the control torque, $$ M(q) $$ is the mass matrix, $$ C(q, \dot{q}) $$ is the Coriolis and centrifugal matrix, $$ G(q) $$ is the gravity vector, $$ q $$ is the joint position, and $$ \ddot{q}_d $$ is the desired joint acceleration.
+
+2. **Sliding Mode Control (SMC)**
+   - **Application**: Robust control of a system with uncertainties, such as an underwater vehicle
+   - **Control Law**:
+     $$
+     u = -K \cdot \text{sign}(s)
+     $$
+     where $$ u $$ is the control input, $$ K $$ is a constant, and $$ s $$ is the sliding surface defined as $$ s = c e + \dot{e} $$ (with $$ e $$ being the tracking error and $$ c $$ a positive constant).
+
+3. **Adaptive Control**
+   - **Application**: Control of a system with unknown parameters, like an aircraft
+   - **Control Law**:
+     $$
+     u = \theta^T \phi(x)
+     $$
+     where $$ u $$ is the control input, $$ \theta $$ is the vector of adaptive parameters, and $$ \phi(x) $$ is a vector of non-linear functions of the state $$ x $$. The parameters $$ \theta $$ are updated based on the tracking error.
+
+4. **Feedback Linearization**
+   - **Application**: Control of a non-linear system, such as a quadrotor drone
+   - **Control Law**:
+     $$
+     u = \alpha(x) + \beta(x)v
+     $$
+     where $$ u $$ is the control input, $$ \alpha(x) $$ and $$ \beta(x) $$ are non-linear functions of the state $$ x $$, and $$ v $$ is the new input designed to achieve linear dynamics.
+
+5. **Neural Network Control**
+   - **Application**: Control of a two-link robot arm
+   - **Control Law**:
+     $$
+     u = f(x)
+     $$
+     where $$ u $$ is the control input, $$ x $$ is the state vector (e.g., joint angles and velocities), and $$ f $$ is a non-linear function represented by a trained neural network. The neural network is trained to approximate the desired control policy based on collected data.
+
+These examples illustrate the diversity of linear and non-linear control policies. Linear control policies, such as PD control and LQR, are simpler and easier to implement but may not be suitable for systems with significant non-linear dynamics. Non-linear control policies, including neural networks, can handle complex system behaviors but are more complex to design and implement.
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcodeslord.github.io%2Fgeneral%2F2024%2F06%2F02%2Fcontrolpolicies%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
