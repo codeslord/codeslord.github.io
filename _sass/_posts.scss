@@ -69,6 +69,7 @@
   color: #333;
   position: relative;
   z-index: 2; /* Ensure link is above overlay */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
 }
 
 .post-footer {
@@ -92,7 +93,6 @@
   padding: .25em 0;
   color: #444444;
   font-style: italic;
-  z-index: 2;
 }
 
 .related-post-title {
@@ -100,5 +100,7 @@
 }
 
 .post-summary {
+  position: relative;
   z-index: 2;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
