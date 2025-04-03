@@ -12,7 +12,7 @@ categories: General
 
 **Bromodoro** is a simple, elegant, and easy-to-use Pomodoro Timer app designed to boost your productivity. It’s **open source**, completely free to use, ad-free, and doesn’t require any login. All your data is stored locally in your browser, ensuring complete privacy.  
 
-👉 **[Try Bromodoro Now!](https://neuralnomads.tech)**  
+👉 **[Try Bromodoro Now!](https://bromodoro.live)**  
 👉 **[View on GitHub](https://github.com/codeslord/pomodoro-app)**  
 
 ---
@@ -38,7 +38,8 @@ Bromodoro is my humble attempt to make this technique even more effective by add
 
 ## Screenshots 📸  
 
-![Bromodoro Screenshot](https://media.daily.dev/image/upload/s--SU-zlexz--/f_auto/v1736091086/ugc/content_62adcd90-01cc-4a89-ba84-d70c52876dfc)  
+![Bromodoro Screenshot]
+<img src="https://i.ibb.co/hJVCcg31/screenshot-dark.png" alt="screenshot-dark" border="0">
 
 ---
 
@@ -67,11 +68,9 @@ Bromodoro is built using modern web technologies:
 
 Bromodoro is a small project I built to help myself—and hopefully others—stay focused and productive while learning or working. Whether you’re studying, tackling tasks, or just trying to get things done, Bromodoro is here to make the process a little easier.  
 
-👉 **[Try Bromodoro Now!](https://neuralnomads.tech)**  
+👉 **[Try Bromodoro Now!](https://bromodoro.live)**  
 👉 **[View on GitHub](https://github.com/codeslord/pomodoro-app)**  
 
 If you have any feedback or suggestions, I’d love to hear from you. Thanks for checking it out, and happy learning! 🍅  
 
 ---
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fneuralnomads.tech&count_bg=%231E9AFE&title_bg=%2360DFCD&icon=&icon_color=%23E7E7E7&title=views&edge_flat=false)](https://hits.seeyoufarm.com)

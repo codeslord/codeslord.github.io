@@ -77,7 +77,7 @@ share_reddit: true
 share_stumbleupon: false
 share_hackernews: false
 #buy me a coffee
-show_buymeacoffee: true
+show_buymeacoffee: false
 buymeacoffee_username: rohithrnair
 
 text:
