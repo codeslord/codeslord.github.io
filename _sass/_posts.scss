@@ -14,7 +14,6 @@
 .post-card *,
 .post-card::before,
 .post-card::after {
-  background-image: none !important;
   border-left: none !important;
   border-right: none !important;
   border-top: none !important;
@@ -30,7 +29,11 @@
   border-bottom: none !important;
   border-top: none !important;
   box-shadow: none !important;
-  background-image: none !important;
+}
+
+/* Allow background images for post images */
+.post-card .post-image {
+  background-image: inherit !important;
 }
 
 /* Responsive design */
@@ -177,6 +180,8 @@
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
   position: relative;
+  /* Ensure background images can show */
+  background-image: inherit !important;
 }
 
 .post-card:hover .post-image {

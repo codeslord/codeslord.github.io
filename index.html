@@ -7,19 +7,22 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
-        <!-- {% assign image_tag = post.content | split: '<img' | last %}
-        {% assign image_url = image_tag | split: 'src="' | last | split: '"' | first %} -->
-        {% assign image_tags = post.content | split: '<img ' %}
-        {% assign last_image_tag = "" %}
-
-        {% for tag in image_tags reversed %}
-          {% if tag contains 'src="' and tag contains '.jpg' or tag contains '.jpeg' or tag contains '.png' or tag contains '.webp' %}
-            {% assign last_image_tag = tag %}
-            {% break %}
-          {% endif %}
-        {% endfor %}
-
-        {% assign image_url = last_image_tag | split: 'src="' | last | split: '"' | first %}
+        <!-- Extract first image from post content -->
+        {% assign image_url = '' %}
+        {% assign post_content = post.content %}
+        
+        {% if post_content contains '<img' %}
+          {% assign img_start = post_content | split: '<img ' %}
+          {% for img_tag in img_start %}
+            {% if img_tag contains 'src="' %}
+              {% assign img_src = img_tag | split: 'src="' | last | split: '"' | first %}
+              {% if img_src contains 'http' or img_src contains '/' %}
+                {% assign image_url = img_src %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
         
         <!-- Assign category-based icon and color -->
         {% assign category_icon = "📝" %}
