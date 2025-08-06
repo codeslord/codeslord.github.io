@@ -89,20 +89,7 @@
 }
 
 .post-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .post-card:hover {
@@ -192,6 +179,14 @@
   gap: 1rem;
   position: relative;
   z-index: 2;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.post-content-section::before,
+.post-content-section::after {
+  display: none;
 }
 
 /* Date Badge */

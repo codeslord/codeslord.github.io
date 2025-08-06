@@ -26,29 +26,7 @@ html {
 }
 
 .post-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 75%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 20px;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
-.post-card:hover::after {
-  opacity: 0.8;
+  display: none;
 }
 
 /* Loading skeleton for posts */
