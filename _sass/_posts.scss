@@ -9,6 +9,30 @@
   max-width: 1400px;
 }
 
+/* Force override any blue elements that could be inherited */
+.post-card,
+.post-card *,
+.post-card::before,
+.post-card::after {
+  background-image: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Eliminate any potential link underlines or borders */
+.post-card a,
+.post-card a *,
+.post-card a::before,
+.post-card a::after {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
 /* Responsive design */
 @media (min-width: 1400px) {
   .posts {
@@ -62,6 +86,23 @@
   outline: none;
   border-bottom: none !important;
   border-top: none !important;
+  
+  /* Comprehensive blue element elimination */
+  text-decoration: none !important;
+  list-style: none !important;
+  background-image: none !important;
+}
+
+/* Eliminate any blue elements, including focus rings and selection */
+.post-card,
+.post-card *,
+.post-card *::before,
+.post-card *::after {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-focus-ring-color: transparent !important;
+  outline-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  text-decoration-color: transparent !important;
 }
 
 .post-card * {
@@ -69,6 +110,16 @@
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
+}
+
+.post-card *::selection {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.post-card *::-moz-selection {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 .post-card a,
@@ -81,6 +132,7 @@
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
   text-decoration: none !important;
+  background: transparent !important;
 }
 
 .post-card:active {
@@ -179,14 +231,20 @@
   gap: 1rem;
   position: relative;
   z-index: 2;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .post-content-section::before,
 .post-content-section::after {
-  display: none;
+  display: none !important;
+}
+
+.post-content-section * {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Date Badge */
@@ -210,8 +268,8 @@
 
 /* Title */
 .post-link-wrapper {
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: inherit !important;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -220,19 +278,29 @@
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
+  background: transparent !important;
+}
+
+.post-link-wrapper *,
+.post-link-wrapper::before,
+.post-link-wrapper::after {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .post-link-wrapper:hover,
 .post-link-wrapper:focus,
 .post-link-wrapper:active,
 .post-link-wrapper:visited {
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: inherit !important;
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
+  background: transparent !important;
 }
 
 .post-title {
