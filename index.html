@@ -7,21 +7,12 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
-        <!-- Extract first image from post content -->
-        {% assign image_url = '' %}
-        {% assign post_content = post.content %}
-        
-        {% if post_content contains '<img' %}
-          {% assign img_start = post_content | split: '<img ' %}
-          {% for img_tag in img_start %}
-            {% if img_tag contains 'src="' %}
-              {% assign img_src = img_tag | split: 'src="' | last | split: '"' | first %}
-              {% if img_src contains 'http' or img_src contains '/' %}
-                {% assign image_url = img_src %}
-                {% break %}
-              {% endif %}
-            {% endif %}
-          {% endfor %}
+        <!-- Extract first image URL - simplified approach -->
+        {% assign image_url = post.content | split: 'src="' %}
+        {% if image_url.size > 1 %}
+          {% assign image_url = image_url[1] | split: '"' | first %}
+        {% else %}
+          {% assign image_url = '' %}
         {% endif %}
         
         <!-- Assign category-based icon and color -->
@@ -53,8 +44,8 @@ layout: default
         <article class="post-card">
           <a href="{{ post.url | relative_url }}" class="post-link-wrapper">
             <!-- Image Section -->
-            {% if image_url %}
-            <div class="post-image-section">
+            {% if image_url != '' %}
+            <div class="post-image-section" data-image-url="{{ image_url }}">
               <div class="post-image" style="background-image: url('{{ image_url }}');"></div>
               <div class="post-category-badge">
                 <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
