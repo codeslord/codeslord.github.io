@@ -22,6 +22,49 @@ Copyright (c) 2014 Daniel Eden
           animation-duration: 2s;
 }
 
+/* Beautiful floating animation for posts */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.post-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+.post-card:nth-child(2n) {
+  animation-delay: -2s;
+}
+
+.post-card:nth-child(3n) {
+  animation-delay: -4s;
+}
+
+/* Shimmer effect for loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
 @-webkit-keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -54,7 +97,43 @@ Copyright (c) 2014 Daniel Eden
   }
 }
 
-.fade-in-down {
+.fadeInDown {
   -webkit-animation-name: fadeInDown;
           animation-name: fadeInDown;
+}
+
+/* Pulse animation for category badges */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.category-icon {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Gradient text effect */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(-45deg, #6366f1, #8b5cf6, #ec4899, #06b6d4);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -87,10 +87,61 @@ body {
 /* Specific class for main content */
 .main-content {
   margin: 0;
-  padding: 2%;
-  // box-shadow: none; /* Ensure no box shadow */
-  // border: none; /* Ensure no border */
-  // border-radius: 0; /* Remove border radius */
+  padding: 2rem 2%;
+  position: relative;
+}
+
+/* Enhanced container styling */
+.site-wrap {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Improved measure container for better content centering */
+.measure {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .measure {
+    max-width: 85%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .measure {
+    max-width: 80%;
+  }
+}
+
+/* Content wrapper with better spacing */
+.post.p2.p-responsive.wrap {
+  padding: 2rem 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* Enhanced main title styling */
+.home .posts {
+  margin-top: 2rem;
+}
+
+/* Add subtle entrance animation for posts container */
+.posts {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 

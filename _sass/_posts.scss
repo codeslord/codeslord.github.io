@@ -1,14 +1,231 @@
+/* Modern Glassmorphic Post Cards */
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .posts {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .posts {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  min-height: 400px;
+}
+
+.post-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Image Section */
+.post-image-section {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.post-card:hover .post-image {
+  transform: scale(1.05);
+}
+
+.post-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.1) 60%, 
+    rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+}
+
+.post-placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  position: relative;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  opacity: 0.6;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Category Badge */
+.post-category-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Content Section */
+.post-content-section {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Date Badge */
+.post-date-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 0.8));
+  color: white;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  align-self: flex-start;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.025em;
+}
+
+/* Title */
+.post-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1f2937;
+  transition: color 0.2s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-link:hover .post-title {
+  color: #6366f1;
+  text-decoration: none;
+}
+
+/* Summary */
+.post-summary {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer Info */
+.post-footer-info {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6366f1;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.read-more-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.post-link:hover .read-more {
+  color: #4f46e5;
+}
+
+.post-link:hover .read-more-icon {
+  transform: translateX(4px);
+}
+
+/* Legacy post styles for backward compatibility */
 .post {
   position: relative;
   overflow: hidden;
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.8); /* Glassmorphic background */
-  // border-radius: 16px; /* Glassmorphic rounded corners */
-  // box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Glassmorphic shadow */
-  backdrop-filter: blur(5px); /* Glassmorphic blur effect */
-  -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Glassmorphic border */
-  padding: 2%; /* Ensure there is no padding */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 2%;
 }
 
 .post-background {
@@ -19,8 +236,7 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay; /* Blend image and color */
-  // filter: opacity(0.7);
+  background-blend-mode: overlay;
   border-radius: 10px;
   z-index: 0;
 }
@@ -28,89 +244,14 @@
 .post-overlay {
   position: relative;
   z-index: 1;
-  background: rgba(219, 209, 209, 0.3); /* Semi-transparent background */
-  border-radius: 16px; /* Match glassmorphic style */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Match glassmorphic style */
-  backdrop-filter: blur(5px); /* Apply blur to create frosted glass effect */
-  -webkit-backdrop-filter: blur(5px); /* Apply blur for Safari */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  background: rgba(219, 209, 209, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 1rem;
-  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
-}
-
-// .posts .post {
-//   margin-bottom: 0.75em;
-//   border-bottom: thin solid #f3f3f3;
-// }
-
-/* Two-column grid layout for posts */
-.posts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
-
-/* Responsive design - single column on mobile and tablets */
-@media (max-width: 1024px) {
-  .posts {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .posts {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-.posts .post {
-  position: relative;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.2); /* Glassmorphic background */
-  border-radius: 16px; /* Rounded corners */
-  backdrop-filter: blur(5px); /* Glassmorphic blur effect */
-  -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
-  padding: 1rem; /* Adjust padding inside the post */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Ensure box shadow */
-  margin-bottom: 0; /* Remove margin since we're using grid gap */
-  border-bottom: none; /* Remove border since we're using grid */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover animation */
-}
-
-/* Hover effect for posts */
-.posts .post:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-}
-
-.posts .post:last-child {
-  border-bottom: none;
-  margin-bottom: 0; /* Remove margin since we're using grid */
-}
-
-.post-link .post-title {
-  margin-top: 0;
-  font-weight: 600;
-  color: #000;
-  position: relative;
-  z-index: 2; /* Ensure link is above overlay */
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glow effect */
-}
-
-.post-footer {
-  @extend .italic;
-
-  margin-top: .75rem;
-  text-align: center;
-}
-
-.post-footer .avatar {
-  margin: 2rem 0;
-  width: 100px;
-  border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .meta,
@@ -129,8 +270,34 @@
   border-bottom: thin solid #f3f3f3;
 }
 
-.post-summary {
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+.post-footer {
+  @extend .italic;
+  margin-top: .75rem;
+  text-align: center;
+}
+
+.post-footer .avatar {
+  margin: 2rem 0;
+  width: 100px;
+  border-radius: 50%;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .post-card {
+    background: rgba(31, 41, 55, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .post-title {
+    color: #f9fafb;
+  }
+  
+  .post-summary {
+    color: #d1d5db;
+  }
+  
+  .post-footer-info {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }

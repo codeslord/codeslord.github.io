@@ -1,0 +1,224 @@
+/* Enhanced Visual Improvements */
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states */
+*:focus {
+  outline: 2px solid rgba(99, 102, 241, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading skeleton for posts */
+.post-skeleton {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.post-skeleton::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* Enhanced typography for better readability */
+.post-title {
+  letter-spacing: -0.025em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.post-summary {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Interactive elements */
+.post-card {
+  cursor: pointer;
+}
+
+.post-card:active {
+  transform: translateY(-4px) scale(1.01);
+  transition: transform 0.1s ease;
+}
+
+/* Enhanced date badge with better visual hierarchy */
+.post-date-badge {
+  font-feature-settings: "tnum";
+  position: relative;
+  overflow: hidden;
+}
+
+.post-date-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Category icon enhancements */
+.category-icon {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+/* Responsive image enhancements */
+.post-image {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Enhanced hover states with better performance */
+@media (hover: hover) {
+  .post-card:hover .post-image {
+    transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .post-card:hover .category-icon {
+    animation-play-state: paused;
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .post-card:hover .post-date-badge {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .post-card {
+    animation: none;
+  }
+  
+  .category-icon {
+    animation: none;
+  }
+  
+  .shimmer {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .post-card {
+    border: 2px solid #000;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .post-title {
+    color: #000;
+  }
+  
+  .post-summary {
+    color: #333;
+  }
+}
+
+/* Print styles */
+@media print {
+  .post-card {
+    background: #fff;
+    border: 1px solid #000;
+    box-shadow: none;
+    backdrop-filter: none;
+    page-break-inside: avoid;
+  }
+  
+  .category-icon {
+    display: none;
+  }
+  
+  .read-more {
+    display: none;
+  }
+}
+
+/* Loading states */
+.posts-loading .post-card {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Error states */
+.post-card.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.post-card.error .post-title {
+  color: #dc2626;
+}
+
+/* Enhanced grid layout for larger screens */
+@media (min-width: 1440px) {
+  .posts {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+/* Ultra-wide screen optimization */
+@media (min-width: 2560px) {
+  .posts {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}

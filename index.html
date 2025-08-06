@@ -20,29 +20,85 @@ layout: default
         {% endfor %}
 
         {% assign image_url = last_image_tag | split: 'src="' | last | split: '"' | first %}
-        <div class="post py3" style="position: relative;">
-         
-          <div class="post-overlay">
-            {% if image_url %}
-            <div class="post-background" style="background-image: url('{{ image_url }}'); background-color: rgba(255, 255, 255, 0.3);"></div>
+        
+        <!-- Assign category-based icon and color -->
+        {% assign category_icon = "📝" %}
+        {% assign category_color = "#6366f1" %}
+        {% if post.categories contains "ai" or post.categories contains "ml" or post.categories contains "artificial-intelligence" %}
+          {% assign category_icon = "🤖" %}
+          {% assign category_color = "#8b5cf6" %}
+        {% elsif post.categories contains "web" or post.categories contains "frontend" or post.categories contains "javascript" %}
+          {% assign category_icon = "🌐" %}
+          {% assign category_color = "#06b6d4" %}
+        {% elsif post.categories contains "python" or post.categories contains "backend" %}
+          {% assign category_icon = "🐍" %}
+          {% assign category_color = "#f59e0b" %}
+        {% elsif post.categories contains "tutorial" or post.categories contains "guide" %}
+          {% assign category_icon = "📚" %}
+          {% assign category_color = "#10b981" %}
+        {% elsif post.categories contains "tools" or post.categories contains "productivity" %}
+          {% assign category_icon = "🛠️" %}
+          {% assign category_color = "#f97316" %}
+        {% elsif post.categories contains "research" or post.categories contains "paper" %}
+          {% assign category_icon = "🔬" %}
+          {% assign category_color = "#ec4899" %}
+        {% elsif post.categories contains "3d" or post.categories contains "graphics" %}
+          {% assign category_icon = "🎨" %}
+          {% assign category_color = "#84cc16" %}
+        {% endif %}
+
+        <article class="post-card">
+          <!-- Image Section -->
+          {% if image_url %}
+          <div class="post-image-section">
+            <div class="post-image" style="background-image: url('{{ image_url }}');"></div>
+            <div class="post-category-badge">
+              <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
+            </div>
+          </div>
+          {% else %}
+          <div class="post-image-section no-image">
+            <div class="post-placeholder-image">
+              <span class="placeholder-icon" style="color: {{ category_color }};">{{ category_icon }}</span>
+            </div>
+            <div class="post-category-badge">
+              <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
+            </div>
+          </div>
           {% endif %}
-            <p class="post-meta">
+          
+          <!-- Content Section -->
+          <div class="post-content-section">
+            <div class="post-date-badge">
               {% if site.date_format %}
                 {{ post.date | date: site.date_format }}
               {% else %}
                 {{ post.date | date: "%b %-d, %Y" }}
               {% endif %}
-            </p>
-            <a href="{{ post.url | relative_url }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
-            <span class="post-summary">
+            </div>
+            
+            <a href="{{ post.url | relative_url }}" class="post-link">
+              <h3 class="post-title">{{ post.title }}</h3>
+            </a>
+            
+            <div class="post-summary">
               {% if post.summary %}
-                {{ post.summary }}
+                {{ post.summary | strip_html | truncatewords: 25 }}
               {% else %}
-                {{ post.excerpt }}
+                {{ post.excerpt | strip_html | truncatewords: 25 }}
               {% endif %}
-            </span>
+            </div>
+            
+            <div class="post-footer-info">
+              <span class="read-more">
+                <svg class="read-more-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                Read More
+              </span>
+            </div>
           </div>
-        </div>
+        </article>
       {% endfor %}
     </div>
 
