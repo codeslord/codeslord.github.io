@@ -6,18 +6,35 @@
 }
 
 .pagination a, .pagination .disabled {
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  background: #fafafa;
-  border-radius: 0.1875em;
-  border: 1px solid #f3f3f3;
+  -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333333;
-  padding: 1em 1.5em;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
 }
 
 .pagination .disabled, .pagination .pagination-meta {
-  opacity: 0.5;
+  opacity: 0.6;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #666;
+  cursor: not-allowed;
 }
 
 .pagination .pagination-meta {
@@ -25,12 +42,23 @@
 }
 
 .pagination a:hover, .pagination a:focus {
-  background: white;
-  color: #477dca;
+  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, rgba(115, 209, 204, 0.3) 0%, rgba(255, 220, 98, 0.2) 50%, rgba(255, 139, 216, 0.3) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #1a1a1a;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .pagination a:active {
-  background: #f7f7f7;
+  transform: translateY(0) scale(0.98);
+  background: linear-gradient(135deg, rgba(115, 209, 204, 0.4) 0%, rgba(255, 220, 98, 0.3) 50%, rgba(255, 139, 216, 0.4) 100%);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .pagination .button {
@@ -40,13 +68,47 @@
 }
 
 .button-disabled {
-  opacity: 0.55;
-  background-color: #999;
+  opacity: 0.5;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #999;
+  cursor: not-allowed;
 }
 
-.button-disabled:hover,
-.button-disabled:active,
-.button-disabled:focus {
+.pagination a:hover,
+.pagination a:active,
+.pagination a:focus {
   cursor: not-allowed;
-  background-color: #999;
+  transform: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Add shimmer effect for pagination buttons */
+.pagination a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.pagination a:hover::before {
+  left: 100%;
+}
+
+/* Enhanced focus states for accessibility */
+.pagination a:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(115, 209, 204, 0.3),
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
