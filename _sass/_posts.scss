@@ -32,7 +32,7 @@
 }
 
 /* Allow background images for post images */
-.post-card .post-image {
+.post-image {
   background-image: inherit !important;
 }
 
@@ -84,7 +84,7 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-height: 400px;
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(0px) scale(1);
   cursor: pointer;
   outline: none;
   border-bottom: none !important;
@@ -179,6 +179,8 @@
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
   position: relative;
+  /* Ensure any inline background-image style is respected */
+  background-image: inherit;
 }
 
 /* Ensure images show even when url is empty - fallback background */

@@ -7,13 +7,11 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
-        <!-- Extract first image URL - simplified approach -->
-        {% assign image_url = post.content | split: 'src="' %}
-        {% if image_url.size > 1 %}
-          {% assign image_url = image_url[1] | split: '"' | first %}
-        {% else %}
+        <!-- Extract first image URL - most basic approach -->
+        {% assign image_url = post.content | split: '<img src="' | last | split: '"' | first %}
+        {% unless post.content contains '<img src="' %}
           {% assign image_url = '' %}
-        {% endif %}
+        {% endunless %}
         
         <!-- Assign category-based icon and color -->
         {% assign category_icon = "📝" %}
@@ -46,7 +44,7 @@ layout: default
             <!-- Image Section -->
             {% if image_url != '' %}
             <div class="post-image-section" data-image-url="{{ image_url }}">
-              <div class="post-image" style="background-image: url('{{ image_url }}');"></div>
+              <div class="post-image" style="background-image: url('{{ image_url }}'); background-color: red;"></div>
               <div class="post-category-badge">
                 <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
               </div>
