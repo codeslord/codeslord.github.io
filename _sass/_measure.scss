@@ -1,4 +1,19 @@
 .measure {
   margin: 0 auto;
   max-width: $measure-width;
+  padding: 0 1rem; /* Add some padding for smaller screens */
+}
+
+/* Responsive width adjustments */
+@media screen and (max-width: 1200px) {
+  .measure {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .measure {
+    max-width: 95%;
+    padding: 0 0.5rem;
+  }
 }

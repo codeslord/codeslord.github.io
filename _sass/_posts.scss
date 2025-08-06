@@ -47,11 +47,17 @@
 .posts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 3rem;
   margin-bottom: 2rem;
 }
 
-/* Responsive design - single column on mobile */
+/* Responsive design - single column on mobile and tablets */
+@media (max-width: 1024px) {
+  .posts {
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .posts {
     grid-template-columns: 1fr;
