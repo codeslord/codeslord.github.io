@@ -40,23 +40,30 @@
   flex-direction: column;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.20) 100%
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.30) 100%
   );
   border-radius: 20px;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 8px 16px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-height: 400px;
+  transform: translateY(-8px) scale(1.02);
+  cursor: pointer;
+}
+
+.post-card:active {
+  transform: translateY(-4px) scale(1.01);
+  transition: transform 0.1s ease;
 }
 
 .post-card::before {
@@ -77,20 +84,20 @@
 }
 
 .post-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(0px) scale(1);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.18),
-    0 8px 16px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.30) 100%
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.20) 100%
   );
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 /* Image Section */
@@ -200,11 +207,20 @@
 }
 
 /* Title */
-.post-link {
+.post-link-wrapper {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
-  z-index: 3;
+  z-index: 2;
+}
+
+.post-link-wrapper:hover,
+.post-link-wrapper:focus {
+  text-decoration: none;
+  color: inherit;
 }
 
 .post-title {
@@ -229,7 +245,7 @@
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
-.post-link:hover .post-title {
+.post-link-wrapper:hover .post-title {
   color: #4f46e5 !important;
   text-decoration: none;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
@@ -260,7 +276,6 @@
 .post-footer-info {
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid rgba(156, 163, 175, 0.3);
   position: relative;
   z-index: 3;
 }
@@ -284,7 +299,7 @@
   transition: transform 0.2s ease;
 }
 
-.post-link:hover .read-more {
+.post-link-wrapper:hover .read-more {
   color: #4f46e5 !important;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
@@ -292,6 +307,10 @@
 .post-card:hover .read-more {
   color: #6366f1 !important;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.post-link-wrapper:hover .read-more-icon {
+  transform: translateX(4px);
 }
 
 /* Legacy post styles for backward compatibility */

@@ -48,56 +48,56 @@ layout: default
         {% endif %}
 
         <article class="post-card">
-          <!-- Image Section -->
-          {% if image_url %}
-          <div class="post-image-section">
-            <div class="post-image" style="background-image: url('{{ image_url }}');"></div>
-            <div class="post-category-badge">
-              <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
+          <a href="{{ post.url | relative_url }}" class="post-link-wrapper">
+            <!-- Image Section -->
+            {% if image_url %}
+            <div class="post-image-section">
+              <div class="post-image" style="background-image: url('{{ image_url }}');"></div>
+              <div class="post-category-badge">
+                <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
+              </div>
             </div>
-          </div>
-          {% else %}
-          <div class="post-image-section no-image">
-            <div class="post-placeholder-image">
-              <span class="placeholder-icon" style="color: {{ category_color }};">{{ category_icon }}</span>
+            {% else %}
+            <div class="post-image-section no-image">
+              <div class="post-placeholder-image">
+                <span class="placeholder-icon" style="color: {{ category_color }};">{{ category_icon }}</span>
+              </div>
+              <div class="post-category-badge">
+                <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
+              </div>
             </div>
-            <div class="post-category-badge">
-              <span class="category-icon" style="background-color: {{ category_color }};">{{ category_icon }}</span>
-            </div>
-          </div>
-          {% endif %}
-          
-          <!-- Content Section -->
-          <div class="post-content-section">
-            <div class="post-date-badge">
-              {% if site.date_format %}
-                {{ post.date | date: site.date_format }}
-              {% else %}
-                {{ post.date | date: "%b %-d, %Y" }}
-              {% endif %}
-            </div>
+            {% endif %}
             
-            <a href="{{ post.url | relative_url }}" class="post-link">
+            <!-- Content Section -->
+            <div class="post-content-section">
+              <div class="post-date-badge">
+                {% if site.date_format %}
+                  {{ post.date | date: site.date_format }}
+                {% else %}
+                  {{ post.date | date: "%b %-d, %Y" }}
+                {% endif %}
+              </div>
+              
               <h3 class="post-title">{{ post.title }}</h3>
-            </a>
-            
-            <div class="post-summary">
-              {% if post.summary %}
-                {{ post.summary | strip_html | truncatewords: 25 }}
-              {% else %}
-                {{ post.excerpt | strip_html | truncatewords: 25 }}
-              {% endif %}
+              
+              <div class="post-summary">
+                {% if post.summary %}
+                  {{ post.summary | strip_html | truncatewords: 25 }}
+                {% else %}
+                  {{ post.excerpt | strip_html | truncatewords: 25 }}
+                {% endif %}
+              </div>
+              
+              <div class="post-footer-info">
+                <span class="read-more">
+                  <svg class="read-more-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+                  Read More
+                </span>
+              </div>
             </div>
-            
-            <div class="post-footer-info">
-              <span class="read-more">
-                <svg class="read-more-icon" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-                Read More
-              </span>
-            </div>
-          </div>
+          </a>
         </article>
       {% endfor %}
     </div>

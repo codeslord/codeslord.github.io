@@ -86,16 +86,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Interactive elements */
-.post-card {
-  cursor: pointer;
-}
-
-.post-card:active {
-  transform: translateY(-4px) scale(1.01);
-  transition: transform 0.1s ease;
-}
-
 /* Enhanced date badge with better visual hierarchy */
 .post-date-badge {
   font-feature-settings: "tnum";
