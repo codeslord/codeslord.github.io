@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphic Blog Preview</title>
+    <style>
+        /* CSS based on our improved SCSS files */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Merriweather', 'PT Serif', Georgia, 'Times New Roman', serif;
+            position: relative;
+        }
+        
+        .home {
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .home::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
+        
+        .home::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: floatingOrbs 20s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        @keyframes floatingOrbs {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.8;
+            }
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translateY(10px) rotate(240deg);
+                opacity: 0.9;
+            }
+        }
+        
+        @keyframes subtleFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .site-header {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.08),
+                0 1px 4px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .site-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .site-nav {
+            margin-top: 0;
+        }
+        
+        .nav-link {
+            color: #2d3748;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            margin: 0 0.3rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        .nav-link:hover {
+            color: #1a202c;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Grid layout for posts */
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .posts {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .posts {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+                gap: 2.5rem;
+            }
+        }
+        
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmerOverlay {
+            0% {
+                transform: translateX(-100%) skewX(-45deg);
+            }
+            100% {
+                transform: translateX(300%) skewX(-45deg);
+            }
+        }
+        
+        .post {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.8s ease forwards;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .post:nth-child(1) { animation-delay: 0.1s; }
+        .post:nth-child(2) { animation-delay: 0.2s; }
+        .post:nth-child(3) { animation-delay: 0.3s; }
+        .post:nth-child(4) { animation-delay: 0.4s; }
+        .post:nth-child(5) { animation-delay: 0.5s; }
+        .post:nth-child(6) { animation-delay: 0.6s; }
+        
+        .post:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .posts:hover .post:not(:hover) {
+            opacity: 0.7;
+            transform: scale(0.98);
+        }
+        
+        .post-overlay {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 1.25rem;
+            color: #2c3e50;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post-overlay::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%) skewX(-45deg);
+            transition: transform 0.8s;
+            pointer-events: none;
+        }
+        
+        .post:hover .post-overlay::before {
+            animation: shimmerOverlay 1.5s ease-out;
+        }
+        
+        .post-title {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            font-size: 1.3rem;
+            line-height: 1.3;
+            transition: all 0.3s ease;
+        }
+        
+        .post-title:hover {
+            color: #2563eb;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
+        }
+        
+        .post-meta {
+            color: #4a5568;
+            font-style: italic;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        .post-summary {
+            color: #2d3748;
+            line-height: 1.6;
+            flex: 1;
+            margin-top: auto;
+            font-size: 0.95rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.8rem;
+                margin: 0.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .posts {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 0.5rem;
+            }
+            
+            .post {
+                padding: 1.25rem;
+            }
+            
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <header class="site-header">
+            <h1 class="site-title">CodeSlord Blog</h1>
+            <nav class="site-nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+        </header>
+        
+        <main class="container">
+            <div class="posts">
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Jan 5, 2025</p>
+                        <h2 class="post-title">Building Beautiful Glassmorphic UIs</h2>
+                        <p class="post-summary">
+                            Discover how to create stunning glassmorphic user interfaces with CSS. This modern design trend combines transparency, blur effects, and subtle shadows to create a sophisticated look that feels both futuristic and elegant.
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Dec 25, 2024</p>
+                        <h2 class="post-title">Advanced CSS Animations</h2>
+                        <p class="post-summary">
+                            Learn how to bring your web designs to life with smooth, performant CSS animations. From subtle micro-interactions to complex keyframe sequences, we'll explore the techniques that make websites feel alive and engaging.
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Dec 15, 2024</p>
+                        <h2 class="post-title">Responsive Design Best Practices</h2>
+                        <p class="post-summary">
+                            Master the art of creating websites that look perfect on every device. We'll cover mobile-first design, flexible layouts, and performance optimization techniques that ensure your site delivers an exceptional experience across all screen sizes.
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Dec 10, 2024</p>
+                        <h2 class="post-title">Modern JavaScript Patterns</h2>
+                        <p class="post-summary">
+                            Explore the latest JavaScript patterns and best practices for building scalable applications. From async/await to modern module systems, learn how to write cleaner, more maintainable code.
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Dec 5, 2024</p>
+                        <h2 class="post-title">Web Performance Optimization</h2>
+                        <p class="post-summary">
+                            Boost your website's speed and user experience with proven performance optimization techniques. Learn about image optimization, code splitting, and caching strategies that make a real difference.
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="post">
+                    <div class="post-overlay">
+                        <p class="post-meta">Nov 30, 2024</p>
+                        <h2 class="post-title">Design Systems in Practice</h2>
+                        <p class="post-summary">
+                            Build consistent, scalable design systems that grow with your product. Discover how to create reusable components, establish design tokens, and maintain visual consistency across teams.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
