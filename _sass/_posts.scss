@@ -42,6 +42,23 @@
 //   margin-bottom: 0.75em;
 //   border-bottom: thin solid #f3f3f3;
 // }
+
+/* Two-column grid layout for posts */
+.posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive design - single column on mobile */
+@media (max-width: 768px) {
+  .posts {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .posts .post {
   position: relative;
   overflow: hidden;
@@ -50,17 +67,22 @@
   backdrop-filter: blur(5px); /* Glassmorphic blur effect */
   -webkit-backdrop-filter: blur(5px); /* Glassmorphic blur effect for Safari */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphic border */
-  // margin-bottom: 2rem; /* Adjust spacing between posts */
   padding: 1rem; /* Adjust padding inside the post */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Ensure box shadow */
-  margin-bottom: 0.75em;
-  border-bottom: thin solid #f3f3f3;
+  margin-bottom: 0; /* Remove margin since we're using grid gap */
+  border-bottom: none; /* Remove border since we're using grid */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover animation */
+}
+
+/* Hover effect for posts */
+.posts .post:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
 }
 
 .posts .post:last-child {
   border-bottom: none;
-  margin-bottom: .375em;
-  // padding-bottom: 0;
+  margin-bottom: 0; /* Remove margin since we're using grid */
 }
 
 .post-link .post-title {
