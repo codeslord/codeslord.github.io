@@ -180,12 +180,48 @@
   transition: transform 0.3s ease;
   position: relative;
   /* Ensure any inline background-image style is respected */
-  background-image: inherit;
+  background-image: inherit !important;
+  /* Fallback background for better visibility */
+  background-color: rgba(99, 102, 241, 0.1);
 }
 
 /* Ensure images show even when url is empty - fallback background */
 .post-image-section.no-image {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+/* Better image loading state */
+.post-image-section[data-image-url]:not([data-image-url=""]) {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+/* Add loading animation for images */
+.post-image-section[data-image-url]:not([data-image-url=""]) .post-image {
+  position: relative;
+}
+
+.post-image-section[data-image-url]:not([data-image-url=""]) .post-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+  background-size: 20px 20px;
+  animation: loading 2s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes loading {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Hide loading animation after image loads */
+.post-image[style*="background-image"]::before {
+  display: none;
 }
 
 .post-card:hover .post-image {
@@ -273,6 +309,13 @@
   letter-spacing: 0.025em;
   position: relative;
   z-index: 3;
+  transition: all 0.2s ease;
+}
+
+.post-card:hover .post-date-badge {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(22, 163, 74, 0.9));
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
 }
 
 /* Title */
@@ -317,14 +360,14 @@
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.3;
-  color: #1f2937 !important;
+  color: #ffffff !important;
   transition: color 0.2s ease;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 3;
 }
@@ -335,14 +378,14 @@
 }
 
 .post-link-wrapper:hover .post-title {
-  color: #4f46e5 !important;
+  color: #1f2937 !important;
   text-decoration: none;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
 /* Summary */
 .post-summary {
-  color: #4b5563 !important;
+  color: #ffffff !important;
   font-size: 0.95rem;
   line-height: 1.6;
   flex: 1;
@@ -351,7 +394,7 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   position: relative;
   z-index: 3;
 }
@@ -372,11 +415,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #6366f1 !important;
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 0.875rem;
   transition: all 0.2s ease;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   position: relative;
   z-index: 3;
 }
@@ -475,11 +518,33 @@
   }
   
   .post-title {
-    color: #f9fafb;
+    color: #f9fafb !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .post-card:hover .post-title {
+    color: #1f2937 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
   }
   
   .post-summary {
-    color: #d1d5db;
+    color: #d1d5db !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  .post-card:hover .post-summary {
+    color: #374151 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  }
+  
+  .read-more {
+    color: #e5e7eb !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  .post-card:hover .read-more {
+    color: #6366f1 !important;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
   }
   
   .post-footer-info {
