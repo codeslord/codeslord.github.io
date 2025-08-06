@@ -28,7 +28,7 @@ Copyright (c) 2014 Daniel Eden
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
   }
 }
 
@@ -42,15 +42,19 @@ Copyright (c) 2014 Daniel Eden
 }
 
 .post-card {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
 }
 
 .post-card:nth-child(2n) {
-  animation-delay: -2s;
+  animation-delay: -2.5s;
 }
 
 .post-card:nth-child(3n) {
-  animation-delay: -4s;
+  animation-delay: -5s;
+}
+
+.post-card:nth-child(4n) {
+  animation-delay: -1s;
 }
 
 /* Shimmer effect for loading */
