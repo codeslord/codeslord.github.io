@@ -12,6 +12,14 @@ html {
   border-radius: 4px;
 }
 
+/* Remove focus outline from post cards specifically */
+.post-card *:focus,
+.post-link-wrapper:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 /* Enhanced glassmorphic effect for better visibility */
 .post-card {
   position: relative;

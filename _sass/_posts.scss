@@ -67,6 +67,20 @@
 .post-card * {
   border: none !important;
   outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.post-card a,
+.post-card a:hover,
+.post-card a:focus,
+.post-card a:active,
+.post-card a:visited {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  text-decoration: none !important;
 }
 
 .post-card:active {
@@ -208,16 +222,22 @@
   height: 100%;
   position: relative;
   z-index: 2;
-  outline: none;
-  border: none;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .post-link-wrapper:hover,
-.post-link-wrapper:focus {
+.post-link-wrapper:focus,
+.post-link-wrapper:active,
+.post-link-wrapper:visited {
   text-decoration: none;
   color: inherit;
-  outline: none;
-  border: none;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .post-title {
