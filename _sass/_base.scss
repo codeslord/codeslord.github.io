@@ -60,20 +60,28 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, 
-    #73D1CC 0%, 
-    rgba(255, 255, 255, 0.8) 20%, 
-    #FFDC62 35%, 
-    rgba(255, 255, 255, 0.9) 55%, 
-    #FFDC62 65%, 
-    rgba(255, 255, 255, 0.8) 80%, 
-    #FF8BD8 100%);
-  background-size: 100%;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: white;
   z-index: -1; /* Ensure it is behind all other content */
-  // filter: blur(5px); /* Optional: Add a blur effect */
+}
+
+/* Color blobs for dynamic background */
+.home::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 85% 15%, #73D1CC 0%, transparent 50%),
+    radial-gradient(circle at 70% 40%, #FFDC62 0%, transparent 50%),
+    radial-gradient(circle at 90% 85%, #FF8BD8 0%, transparent 50%),
+    radial-gradient(circle at 15% 20%, rgba(115, 209, 204, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 25% 70%, rgba(255, 220, 98, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(255, 139, 216, 0.5) 0%, transparent 40%);
+  filter: blur(80px);
+  opacity: 0.8;
 }
 
 /* Specific class for main content */
