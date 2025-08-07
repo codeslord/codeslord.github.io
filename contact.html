@@ -42,7 +42,12 @@ tags: contact
       <input type="hidden" name="_subject" value="{{ site.text.contact.subject | default: "New submission!" }}" />
       <input type="text" name="_gotcha" style="display:none" />
 
-      <input type="submit" class="button button-blue button-big mobile-block" value="📧 {{ site.text.contact.submit | default: "Say Hello" }}">
+      <button type="submit" class="button button-blue button-big mobile-block">
+        <svg class="mail-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: -2px;">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>{{ site.text.contact.submit | default: "Say Hello" }}
+      </button>
     </form>
   {% endif %}
 </div>
