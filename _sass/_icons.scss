@@ -1,0 +1,112 @@
+/* SVG Icon Styles */
+
+/* Category Icons */
+.category-icon svg,
+.placeholder-icon svg {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Theme Toggle Icon specific styles */
+.theme-toggle-icon svg {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Different icon sizes */
+.icon-xs { width: 12px; height: 12px; }
+.icon-sm { width: 16px; height: 16px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-lg { width: 24px; height: 24px; }
+.icon-xl { width: 32px; height: 32px; }
+.icon-2xl { width: 40px; height: 40px; }
+.icon-3xl { width: 48px; height: 48px; }
+.icon-4xl { width: 64px; height: 64px; }
+
+/* Icon colors for different categories */
+.icon-ai { color: #8b5cf6; }
+.icon-web { color: #06b6d4; }
+.icon-python { color: #f59e0b; }
+.icon-tutorial { color: #10b981; }
+.icon-tools { color: #f97316; }
+.icon-research { color: #ec4899; }
+.icon-graphics { color: #84cc16; }
+.icon-default { color: #6366f1; }
+
+/* Hover effects for icons */
+.category-icon:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.placeholder-icon:hover svg {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Dark mode adjustments for icons */
+[data-theme="dark"] .category-icon svg,
+[data-theme="dark"] .placeholder-icon svg {
+  stroke: currentColor;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+}
+
+/* Ensure SVG icons work properly in flex containers */
+.category-icon,
+.placeholder-icon,
+.theme-toggle {
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Animation for theme toggle icon */
+.theme-toggle:hover .theme-toggle-icon svg {
+  transform: rotate(15deg) scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Loading state for icons */
+@keyframes icon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.icon-loading {
+  animation: icon-pulse 2s infinite;
+}
+
+/* Accessibility improvements */
+.category-icon[aria-label],
+.theme-toggle[aria-label] {
+  position: relative;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .category-icon svg,
+  .placeholder-icon svg,
+  .theme-toggle-icon svg {
+    stroke-width: 3;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .category-icon:hover svg,
+  .placeholder-icon:hover svg,
+  .theme-toggle:hover .theme-toggle-icon svg {
+    transform: none;
+    transition: none;
+  }
+  
+  .icon-loading {
+    animation: none;
+  }
+}

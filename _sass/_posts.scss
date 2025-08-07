@@ -308,6 +308,11 @@ div.post-image[style*="background-image: url"] {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
+.placeholder-icon svg {
+  width: 4rem;
+  height: 4rem;
+}
+
 /* Category Badge */
 .post-category-badge {
   position: absolute;
@@ -329,6 +334,11 @@ div.post-image[style*="background-image: url"] {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.category-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* Content Section */

@@ -5,7 +5,21 @@
       <nav class="site-nav">
         {% include navigation.html %}
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-          <span class="theme-toggle-icon">🌓</span>
+          <svg class="theme-toggle-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="m12 2 0 2"></path>
+            <path d="m12 20 0 2"></path>
+            <path d="m12 2 0 2"></path>
+            <path d="m20.66 7 -1.73 1"></path>
+            <path d="m11.30 17.66 -1.73 1"></path>
+            <path d="m20.66 17 -1.73 -1"></path>
+            <path d="m11.30 6.34 -1.73 -1"></path>
+            <path d="m22 12 -2 0"></path>
+            <path d="m4 12 -2 0"></path>
+          </svg>
+          <svg class="theme-toggle-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6.364 6.364 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
         </button>
       </nav>
       <div class="clearfix"></div>

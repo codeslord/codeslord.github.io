@@ -4,7 +4,6 @@
 .theme-toggle {
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
@@ -17,6 +16,7 @@
   height: 40px;
   position: relative;
   z-index: 1000;
+  color: currentColor;
 }
 
 .theme-toggle:hover {
@@ -37,6 +37,19 @@
 
 .theme-toggle-icon {
   transition: transform 0.3s ease;
+  display: none;
+}
+
+.theme-toggle-icon.theme-icon-dark {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle-icon.theme-icon-light {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle-icon.theme-icon-dark {
+  display: none;
 }
 
 .theme-toggle:hover .theme-toggle-icon {
@@ -203,6 +216,13 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Ensure the main site wrapper also gets the dark background */
+[data-theme="dark"] .site-wrap,
+[data-theme="dark"] .home {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
 [data-theme="dark"] .site-header {
   background-color: var(--header-bg);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -352,8 +372,12 @@
   .theme-toggle {
     width: 35px;
     height: 35px;
-    font-size: 1.2rem;
     margin-left: 0.5rem;
+  }
+  
+  .theme-toggle-icon {
+    width: 16px;
+    height: 16px;
   }
   
   .site-nav {

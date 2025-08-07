@@ -56,14 +56,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     // Check for saved theme or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', currentTheme);
     
     // Update toggle icon based on theme
     function updateToggleIcon(theme) {
-      const icon = document.querySelector('.theme-toggle-icon');
-      icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      const lightIcon = document.querySelector('.theme-icon-light');
+      const darkIcon = document.querySelector('.theme-icon-dark');
+      
+      if (theme === 'dark') {
+        lightIcon.style.display = 'block';
+        darkIcon.style.display = 'none';
+      } else {
+        lightIcon.style.display = 'none';
+        darkIcon.style.display = 'block';
+      }
     }
     
+    // Initialize theme
+    body.setAttribute('data-theme', currentTheme);
     updateToggleIcon(currentTheme);
     
     // Theme toggle functionality

@@ -62,6 +62,19 @@ body {
   height: 100%;
   background: white;
   z-index: -1; /* Ensure it is behind all other content */
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode background override */
+[data-theme="dark"] .home::before {
+  background: linear-gradient(
+    135deg,
+    #0f0f23 0%,
+    #1a1a2e 25%,
+    #16213e 50%,
+    #0f0f23 75%,
+    #1a1a2e 100%
+  );
 }
 
 /* Color blobs for dynamic background */
@@ -82,6 +95,20 @@ body {
     radial-gradient(circle at 10% 90%, rgba(255, 139, 216, 0.9) 0%, transparent 18%);
   filter: blur(80px);
   opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* Dark mode color blobs */
+[data-theme="dark"] .home::after {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 18%),
+    radial-gradient(circle at 25% 70%, rgba(139, 92, 246, 0.3) 0%, transparent 20%),
+    radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.3) 0%, transparent 18%),
+    radial-gradient(circle at 85% 30%, rgba(239, 68, 68, 0.2) 0%, transparent 15%),
+    radial-gradient(circle at 75% 80%, rgba(245, 101, 101, 0.2) 0%, transparent 15%),
+    radial-gradient(circle at 90% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 12%);
+  filter: blur(80px);
+  opacity: 0.4;
 }
 
 /* Specific class for main content */
