@@ -14,6 +14,13 @@
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>{{ item.title }}
             </a>
+        {% elsif item.title == "Say Hello" %}
+            <a class="nav-active" href="{{ item.url | relative_url }}">
+                <svg class="nav-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: -2px;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>{{ item.title }}
+            </a>
         {% else %}
             <a class="nav-active" href="{{ item.url | relative_url }}">{{ item.title }}</a>
         {% endif %}
@@ -24,6 +31,13 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="16" x2="12" y2="12"></line>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>{{ item.title }}
+            </a>
+        {% elsif item.title == "Say Hello" %}
+            <a class="nav-link" href="{{ item.url | relative_url }}">
+                <svg class="nav-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; vertical-align: -2px;">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>{{ item.title }}
             </a>
         {% else %}
