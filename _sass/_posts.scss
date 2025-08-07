@@ -7,6 +7,123 @@
   padding: 2rem;
   justify-content: center;
   max-width: 1200px;
+  position: relative;
+}
+
+/* Background blobs for individual post cards - Light mode only */
+.post-card::before,
+.post-card::after,
+.post-card .post-link-wrapper::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(40px);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+/* First blob - Top left area */
+.post-card::before {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(115, 209, 204, 0.4) 0%, transparent 70%);
+  top: -20px;
+  left: -30px;
+}
+
+/* Second blob - Top right area */
+.post-card::after {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 220, 98, 0.4) 0%, transparent 70%);
+  top: -10px;
+  right: -20px;
+}
+
+/* Third blob - Bottom center */
+.post-card .post-link-wrapper::before {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 139, 216, 0.4) 0%, transparent 70%);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Variation for different post cards using nth-child */
+.post-card:nth-child(2n)::before {
+  background: radial-gradient(circle, rgba(255, 139, 216, 0.4) 0%, transparent 70%);
+  width: 110px;
+  height: 110px;
+  top: -15px;
+  left: -25px;
+}
+
+.post-card:nth-child(2n)::after {
+  background: radial-gradient(circle, rgba(115, 209, 204, 0.4) 0%, transparent 70%);
+  width: 90px;
+  height: 90px;
+  top: -5px;
+  right: -25px;
+}
+
+.post-card:nth-child(2n) .post-link-wrapper::before {
+  background: radial-gradient(circle, rgba(255, 220, 98, 0.4) 0%, transparent 70%);
+  width: 85px;
+  height: 85px;
+  bottom: -20px;
+}
+
+.post-card:nth-child(3n)::before {
+  background: radial-gradient(circle, rgba(255, 220, 98, 0.4) 0%, transparent 70%);
+  width: 115px;
+  height: 115px;
+  top: -25px;
+  left: -35px;
+}
+
+.post-card:nth-child(3n)::after {
+  background: radial-gradient(circle, rgba(255, 139, 216, 0.4) 0%, transparent 70%);
+  width: 95px;
+  height: 95px;
+  top: -12px;
+  right: -15px;
+}
+
+.post-card:nth-child(3n) .post-link-wrapper::before {
+  background: radial-gradient(circle, rgba(115, 209, 204, 0.4) 0%, transparent 70%);
+  width: 75px;
+  height: 75px;
+  bottom: -10px;
+}
+
+/* Enhanced hover effects for blobs */
+.post-card:hover::before,
+.post-card:hover::after,
+.post-card:hover .post-link-wrapper::before {
+  opacity: 0.8;
+  filter: blur(35px);
+  transform: scale(1.1);
+}
+
+.post-card:hover .post-link-wrapper::before {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Hide blobs in dark mode to maintain the existing dark mode design */
+[data-theme="dark"] .post-card::before,
+[data-theme="dark"] .post-card::after,
+[data-theme="dark"] .post-card .post-link-wrapper::before {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-card::before,
+  .post-card::after,
+  .post-card .post-link-wrapper::before {
+    display: none;
+  }
 }
 
 /* Force override any blue elements that could be inherited */
@@ -62,6 +179,50 @@
   .post-content-section {
     padding: 1.5rem;
     gap: 1rem;
+  }
+
+  /* Smaller blobs for mobile */
+  .post-card::before {
+    width: 80px;
+    height: 80px;
+    top: -10px;
+    left: -20px;
+  }
+
+  .post-card::after {
+    width: 70px;
+    height: 70px;
+    top: -5px;
+    right: -15px;
+  }
+
+  .post-card .post-link-wrapper::before {
+    width: 60px;
+    height: 60px;
+    bottom: -10px;
+  }
+
+  .post-card:nth-child(2n)::before,
+  .post-card:nth-child(3n)::before {
+    width: 75px;
+    height: 75px;
+    top: -8px;
+    left: -18px;
+  }
+
+  .post-card:nth-child(2n)::after,
+  .post-card:nth-child(3n)::after {
+    width: 65px;
+    height: 65px;
+    top: -3px;
+    right: -12px;
+  }
+
+  .post-card:nth-child(2n) .post-link-wrapper::before,
+  .post-card:nth-child(3n) .post-link-wrapper::before {
+    width: 55px;
+    height: 55px;
+    bottom: -8px;
   }
 }
 
