@@ -1,12 +1,12 @@
 /* Modern Glassmorphic Post Cards */
 .posts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   margin: 3rem auto 3rem auto;
   padding: 2rem;
   justify-content: center;
-  max-width: 1400px;
+  max-width: 1200px;
 }
 
 /* Force override any blue elements that could be inherited */
@@ -34,8 +34,8 @@
 /* Responsive design */
 @media (min-width: 1400px) {
   .posts {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    max-width: 1300px;
     padding: 2.5rem;
     gap: 3.5rem;
   }
@@ -44,8 +44,9 @@
 @media (max-width: 1200px) {
   .posts {
     gap: 2.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     padding: 1.5rem;
+    max-width: 1000px;
   }
 }
 
