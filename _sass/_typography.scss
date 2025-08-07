@@ -1,5 +1,9 @@
 html {
   font-size: $base-font-size;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 abbr {
@@ -9,13 +13,28 @@ abbr {
 
 p {
   color: var(--text-color, #333);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.003em;
 }
 
 small,
 .small {
-  font-size: 0.707rem;
+  font-size: 0.8rem;
+  font-weight: 400;
 }
+
+// Improve heading readability
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $heading-font-weight;
+  letter-spacing: -0.02em;
+  color: var(--heading-color, #1f2937);
+}
+
+h1 { font-weight: 700; }
+h2 { font-weight: 600; }
+h3 { font-weight: 600; }
+h4, h5, h6 { font-weight: 500; }
 
 sup {
   position: relative;
