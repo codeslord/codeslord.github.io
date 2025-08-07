@@ -181,6 +181,59 @@
   left: 20%;
 }
 
+/* Light Mode Text Colors (ensuring proper contrast) */
+body {
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937;
+}
+
+p, span, div, li, td, th, label {
+  color: #374151;
+}
+
+strong, b {
+  color: #111827;
+}
+
+em, i {
+  color: #4b5563;
+}
+
+/* Light mode blockquotes */
+blockquote {
+  border-left: 4px solid var(--link-color);
+  background: rgba(99, 102, 241, 0.05);
+  color: #4b5563;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Light mode post content */
+.post-content,
+.post-header,
+article {
+  color: #374151;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.post-header h1 {
+  color: #1f2937;
+}
+
+.post-meta,
+.small,
+small {
+  color: #6b7280;
+}
+
 /* Dark Mode Variables */
 :root {
   --bg-color: #ffffff;
@@ -216,11 +269,36 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global text color inheritance for dark mode */
+[data-theme="dark"] *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.bg-3d *) {
+  color: inherit;
+}
+
 /* Ensure the main site wrapper also gets the dark background */
 [data-theme="dark"] .site-wrap,
 [data-theme="dark"] .home {
   background-color: transparent;
   color: var(--text-color);
+}
+
+/* Dark mode text elements - comprehensive coverage */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] label {
+  color: #e2e8f0 !important;
 }
 
 [data-theme="dark"] .site-header {
@@ -320,6 +398,154 @@
   text-shadow: 0 0 5px currentColor;
 }
 
+/* Dark Mode Post Content - Comprehensive text styling */
+[data-theme="dark"] .post-content,
+[data-theme="dark"] .post-header,
+[data-theme="dark"] article {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .post-content h1,
+[data-theme="dark"] .post-content h2,
+[data-theme="dark"] .post-content h3,
+[data-theme="dark"] .post-content h4,
+[data-theme="dark"] .post-content h5,
+[data-theme="dark"] .post-content h6,
+[data-theme="dark"] .post-header h1 {
+  color: #f8fafc !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .post-content p,
+[data-theme="dark"] .post-content li,
+[data-theme="dark"] .post-content span,
+[data-theme="dark"] .post-content div,
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .post-summary {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .post-content strong,
+[data-theme="dark"] .post-content b {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .post-content em,
+[data-theme="dark"] .post-content i {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .post-content blockquote {
+  border-left: 4px solid var(--link-color);
+  background: rgba(31, 41, 55, 0.5);
+  color: #cbd5e1 !important;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+[data-theme="dark"] .post-content blockquote p {
+  color: #cbd5e1 !important;
+}
+
+/* Dark mode post meta and small text */
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .small,
+[data-theme="dark"] small {
+  color: #94a3b8 !important;
+}
+
+/* Dark mode related posts */
+[data-theme="dark"] .related-post-title {
+  color: #f8fafc !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .post-link .post-title {
+  color: var(--link-color) !important;
+}
+
+[data-theme="dark"] .post-link .post-title:hover {
+  color: #93c5fd !important;
+}
+
+/* Ensure all text in post content inherits proper colors */
+[data-theme="dark"] .post-content * {
+  color: inherit;
+}
+
+/* Dark mode footnotes and references */
+[data-theme="dark"] .footnotes,
+[data-theme="dark"] .footnote {
+  color: #94a3b8 !important;
+  border-top: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .footnotes p,
+[data-theme="dark"] .footnote p {
+  color: #94a3b8 !important;
+}
+
+/* Dark mode comprehensive content styling */
+[data-theme="dark"] .post-content dl,
+[data-theme="dark"] .post-content dt,
+[data-theme="dark"] .post-content dd {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .post-content dt {
+  font-weight: 600;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .post-content kbd {
+  background-color: rgba(31, 41, 55, 0.8);
+  color: #f8fafc !important;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+[data-theme="dark"] .post-content mark {
+  background-color: rgba(245, 101, 101, 0.3);
+  color: #f8fafc !important;
+  padding: 0.1rem 0.2rem;
+}
+
+[data-theme="dark"] .post-content abbr {
+  color: var(--link-color) !important;
+  border-bottom: 1px dotted var(--link-color);
+}
+
+/* Dark mode image captions and figures */
+[data-theme="dark"] .post-content figcaption,
+[data-theme="dark"] .post-content figure {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .post-content figure img {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode catch-all for any missed text elements */
+[data-theme="dark"] .post,
+[data-theme="dark"] .wrap,
+[data-theme="dark"] .measure {
+  color: var(--text-color) !important;
+}
+
+/* Ensure all children inherit the dark mode color unless specifically overridden */
+[data-theme="dark"] .post *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.bg-3d *):not(.highlight *):not(pre *):not(code *) {
+  color: inherit !important;
+}
+
+/* Fix any remaining light-colored text in dark mode */
+[data-theme="dark"] .post *[style*="color"] {
+  color: var(--text-color) !important;
+}
+
 /* Dark Mode Code Blocks */
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
@@ -333,6 +559,29 @@
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .highlight *,
+[data-theme="dark"] pre *,
+[data-theme="dark"] code * {
+  color: inherit !important;
+}
+
+/* Dark mode list styling */
+[data-theme="dark"] ul,
+[data-theme="dark"] ol {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] ul li::marker,
+[data-theme="dark"] ol li::marker {
+  color: var(--link-color);
+}
+
+/* Dark mode hr styling */
+[data-theme="dark"] hr {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* Dark Mode Table Styles */
