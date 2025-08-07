@@ -133,3 +133,8 @@ $footer-color: #7a7a7a;
 $footer-bg-color: #fafafa;
 $footer-font-weight: 400;
 $footer-font-size: .75rem;
+
+// Gradient Border Variables (matching site title)
+$gradient-border: linear-gradient(135deg, #4c9ff9, #b07af9, #f98b8b, #f97d47, #f9c547);
+$gradient-glow-subtle: 0 0 4px rgba(76, 159, 249, 0.3), 0 0 8px rgba(176, 122, 249, 0.2), 0 0 12px rgba(249, 139, 139, 0.1);
+$gradient-glow-strong: 0 0 8px rgba(76, 159, 249, 0.5), 0 0 16px rgba(176, 122, 249, 0.4), 0 0 24px rgba(249, 139, 139, 0.3), 0 0 32px rgba(249, 125, 71, 0.2);
