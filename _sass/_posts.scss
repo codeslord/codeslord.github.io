@@ -383,12 +383,15 @@
       rgba(55, 65, 81, 0.5) 50%,
       rgba(31, 41, 55, 0.65) 100%
     );
-    box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      $gradient-glow-dark-subtle;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 
     &::after {
-      opacity: 0.9;
+      top: -#{$gradient-border-width-dark};
+      left: -#{$gradient-border-width-dark};
+      right: -#{$gradient-border-width-dark};
+      bottom: -#{$gradient-border-width-dark};
+      border-radius: calc(21px + #{$gradient-border-width-dark});
+      opacity: 1;
     }
 
     &:hover {
@@ -398,12 +401,14 @@
         rgba(55, 65, 81, 0.7) 50%,
         rgba(31, 41, 55, 0.8) 100%
       );
-      box-shadow: 
-        0 16px 40px rgba(0, 0, 0, 0.4),
-        $gradient-glow-dark-strong;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 
       &::after {
-        opacity: 1;
+        top: -#{$gradient-border-width-dark-hover};
+        left: -#{$gradient-border-width-dark-hover};
+        right: -#{$gradient-border-width-dark-hover};
+        bottom: -#{$gradient-border-width-dark-hover};
+        border-radius: calc(21px + #{$gradient-border-width-dark-hover});
       }
 
       .post-title {
@@ -450,12 +455,15 @@
     rgba(55, 65, 81, 0.65) 50%,
     rgba(31, 41, 55, 0.75) 100%
   );
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.3),
-    $gradient-glow-dark-subtle;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 
   &::after {
-    opacity: 0.9;
+    top: -#{$gradient-border-width-dark};
+    left: -#{$gradient-border-width-dark};
+    right: -#{$gradient-border-width-dark};
+    bottom: -#{$gradient-border-width-dark};
+    border-radius: calc(21px + #{$gradient-border-width-dark});
+    opacity: 1;
   }
 
   &:hover {
@@ -465,12 +473,14 @@
       rgba(55, 65, 81, 0.8) 50%,
       rgba(31, 41, 55, 0.9) 100%
     );
-    box-shadow: 
-      0 16px 40px rgba(0, 0, 0, 0.4),
-      $gradient-glow-dark-strong;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 
     &::after {
-      opacity: 1;
+      top: -#{$gradient-border-width-dark-hover};
+      left: -#{$gradient-border-width-dark-hover};
+      right: -#{$gradient-border-width-dark-hover};
+      bottom: -#{$gradient-border-width-dark-hover};
+      border-radius: calc(21px + #{$gradient-border-width-dark-hover});
     }
   }
 
