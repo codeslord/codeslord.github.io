@@ -1,20 +1,5 @@
-{% if paginator.total_pages   <div class="right">
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}">
-        {{ site.text.pagination.older | default: "Older" }}
-        <svg class="pagination-arrow-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px;">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </a>
-    {% else %}
-      <span class="disabled">
-        {{ site.text.pagination.older | default: "Older" }}
-        <svg class="pagination-arrow-right disabled" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px; opacity: 0.5;">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </span>
-    {% endif %}
-  </div>ss="pagination clearfix mb1 mt4">
+{% if paginator.total_pages != 1 %}
+<div class="pagination clearfix mb1 mt4">
   <div class="left">
     {% if paginator.previous_page %}
       {% if paginator.page == 2 %}
@@ -43,11 +28,24 @@
   </div>
   <div class="right">
     {% if paginator.next_page %}
-      <a class="pagination-item" href="{{ paginator.next_page_path | relative_url }}">
+      <a href="{{ paginator.next_page_path | relative_url }}">
         {{ site.text.pagination.older | default: "Older" }}
         <svg class="pagination-arrow-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px;">
           <path d="m9 18 6-6-6-6"/>
         </svg>
+      </a>
+    {% else %}
+      <span class="disabled">
+        {{ site.text.pagination.older | default: "Older" }}
+        <svg class="pagination-arrow-right disabled" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px; opacity: 0.5;">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </span>
+    {% endif %}
+  </div>
+  <div class="pagination-meta">Page {{ paginator.page }} of {{ paginator.total_pages }}</div>
+</div>
+{% endif %}
       </a>
     {% else %}
       <span class="pagination-item disabled">
