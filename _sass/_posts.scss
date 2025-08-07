@@ -1,12 +1,80 @@
-/* Modern Glassmorphic Post Cards */
+/* Modern Glassmorphic Post Cards - Frosted Glass Plate Effect */
 .posts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 3rem;
   margin: 3rem auto 3rem auto;
-  padding: 2rem;
+  padding: 3rem;
   justify-content: center;
   max-width: 1400px;
+  position: relative;
+  
+  /* Create the main frosted glass plate effect */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    0 15px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  
+  /* Subtle animated gradient overlay */
+  overflow: hidden;
+}
+
+/* Add subtle moving gradient effect to the glass plate */
+.posts::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.02) 0%,
+    rgba(139, 92, 246, 0.02) 25%,
+    rgba(16, 185, 129, 0.02) 50%,
+    rgba(245, 101, 101, 0.02) 75%,
+    rgba(99, 102, 241, 0.02) 100%
+  );
+  background-size: 200% 200%;
+  animation: glass-shimmer 12s ease-in-out infinite;
+  z-index: 1;
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+/* Add glass plate edge lighting */
+.posts::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes glass-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Force override any blue elements that could be inherited */
@@ -31,13 +99,14 @@
   box-shadow: none !important;
 }
 
-/* Responsive design */
+/* Responsive design for the glass plate */
 @media (min-width: 1400px) {
   .posts {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
-    padding: 2.5rem;
+    padding: 3.5rem;
     gap: 3.5rem;
+    border-radius: 35px;
   }
 }
 
@@ -45,7 +114,8 @@
   .posts {
     gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    padding: 1.5rem;
+    padding: 2.5rem;
+    border-radius: 25px;
   }
 }
 
@@ -53,9 +123,14 @@
   .posts {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 1rem;
+    padding: 2rem 1.5rem;
     max-width: 500px;
     margin: 2rem auto;
+    border-radius: 20px;
+    
+    /* Adjust glass effect for mobile */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .post-content-section {
@@ -64,23 +139,27 @@
   }
 }
 
+/* Individual post cards - now appear as if embedded in the glass plate */
 .post-card {
   display: flex;
   flex-direction: column;
+  /* Subtle inset effect to look like cards are embedded in the glass plate */
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.30) 100%
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 100%
   );
-  border-radius: 20px;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 18px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Inset shadow to create embedded appearance */
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.18),
-    0 8px 16px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -90,6 +169,27 @@
   outline: none;
   border-bottom: none !important;
   border-top: none !important;
+  z-index: 2; /* Ensure cards are above the glass plate background */
+  
+  /* Add subtle rim lighting effect */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 18px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
   
   /* Comprehensive blue element elimination */
   text-decoration: none !important;
@@ -153,19 +253,24 @@
 }
 
 .post-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-8px) scale(1.02);
+  /* Enhanced glass effect on hover - looks like card is lifting slightly from the plate */
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0.40) 100%
+    rgba(255, 255, 255, 0.20) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.16) 100%
   );
-  backdrop-filter: blur(35px);
-  -webkit-backdrop-filter: blur(35px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    /* Lifted shadow effect */
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 12px 25px rgba(0, 0, 0, 0.12),
+    /* Maintain inset effect but lighter */
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.03);
 }
 
 /* Image Section */
@@ -349,7 +454,7 @@ div.post-image[style*="background-image: url"] {
   flex-direction: column;
   gap: 1.25rem;
   position: relative;
-  z-index: 2;
+  z-index: 3; /* Above card effects and glass plate */
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -401,7 +506,7 @@ div.post-image[style*="background-image: url"] {
   flex-direction: column;
   height: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 3; /* Above card effects and glass plate */
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
@@ -586,11 +691,82 @@ div.post-image[style*="background-image: url"] {
   border-radius: 50%;
 }
 
-/* Dark mode support */
+/* Dark mode support for frosted glass plate effect */
+[data-theme="dark"] .posts {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 30, 50, 0.25) 0%,
+    rgba(20, 20, 35, 0.15) 50%,
+    rgba(25, 25, 40, 0.20) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.25),
+    0 15px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .posts::before {
+  background: linear-gradient(
+    45deg,
+    rgba(99, 102, 241, 0.05) 0%,
+    rgba(139, 92, 246, 0.05) 25%,
+    rgba(16, 185, 129, 0.05) 50%,
+    rgba(245, 101, 101, 0.05) 75%,
+    rgba(99, 102, 241, 0.05) 100%
+  );
+}
+
+[data-theme="dark"] .post-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.03),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .post-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.09) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 12px 25px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.06),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* Legacy dark mode support */
 @media (prefers-color-scheme: dark) {
+  .posts {
+    background: linear-gradient(
+      135deg,
+      rgba(30, 30, 50, 0.25) 0%,
+      rgba(20, 20, 35, 0.15) 50%,
+      rgba(25, 25, 40, 0.20) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
   .post-card {
-    background: rgba(31, 41, 55, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
   .post-title {
