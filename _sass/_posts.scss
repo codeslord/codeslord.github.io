@@ -385,10 +385,10 @@
     );
     box-shadow: 
       0 8px 24px rgba(0, 0, 0, 0.3),
-      $gradient-glow-subtle;
+      $gradient-glow-dark-subtle;
 
     &::after {
-      opacity: 0.4;
+      opacity: 0.7;
     }
 
     &:hover {
@@ -400,10 +400,10 @@
       );
       box-shadow: 
         0 16px 40px rgba(0, 0, 0, 0.4),
-        $gradient-glow-strong;
+        $gradient-glow-dark-strong;
 
       &::after {
-        opacity: 0.8;
+        opacity: 1;
       }
 
       .post-title {
@@ -452,10 +452,10 @@
   );
   box-shadow: 
     0 8px 24px rgba(0, 0, 0, 0.3),
-    $gradient-glow-subtle;
+    $gradient-glow-dark-subtle;
 
   &::after {
-    opacity: 0.4;
+    opacity: 0.7;
   }
 
   &:hover {
@@ -467,10 +467,10 @@
     );
     box-shadow: 
       0 16px 40px rgba(0, 0, 0, 0.4),
-      $gradient-glow-strong;
+      $gradient-glow-dark-strong;
 
     &::after {
-      opacity: 0.8;
+      opacity: 1;
     }
   }
 
