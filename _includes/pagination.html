@@ -1,16 +1,31 @@
-{% if paginator.total_pages != 1 %}
-<div class="pagination clearfix mb1 mt4">
+{% if paginator.total_pages   <div class="right">
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">
+        {{ site.text.pagination.older | default: "Older" }}
+        <svg class="pagination-arrow-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px;">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </a>
+    {% else %}
+      <span class="disabled">
+        {{ site.text.pagination.older | default: "Older" }}
+        <svg class="pagination-arrow-right disabled" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -2px; opacity: 0.5;">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </span>
+    {% endif %}
+  </div>ss="pagination clearfix mb1 mt4">
   <div class="left">
     {% if paginator.previous_page %}
       {% if paginator.page == 2 %}
-        <a class="pagination-item" href="{{ "/" | relative_url }}">
+        <a href="{{ "/" | relative_url }}">
           <svg class="pagination-arrow-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: -2px;">
             <path d="m15 18-6-6 6-6"/>
           </svg>
           {{ site.text.pagination.newer | default: "Newer" }}
         </a>
       {% else %}
-        <a class="pagination-item" href="{{ paginator.previous_page_path | relative_url }}">
+        <a href="{{ paginator.previous_page_path | relative_url }}">
           <svg class="pagination-arrow-left" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: -2px;">
             <path d="m15 18-6-6 6-6"/>
           </svg>
@@ -18,7 +33,7 @@
         </a>
       {% endif %}
     {% else %}
-      <span class="pagination-item disabled">
+      <span class="disabled">
         <svg class="pagination-arrow-left disabled" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: -2px; opacity: 0.5;">
           <path d="m15 18-6-6 6-6"/>
         </svg>

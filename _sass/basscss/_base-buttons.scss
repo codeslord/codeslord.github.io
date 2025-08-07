@@ -7,7 +7,8 @@ button,
   font-weight: $button-font-weight;
   text-decoration: none;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   box-sizing: border-box;
   line-height: $button-line-height;
   padding: $button-padding-y $button-padding-x;
@@ -30,9 +31,11 @@ button,
 
 // Button icon styling
 .button .mail-icon {
-  display: inline-block;
+  display: inline-block !important;
   vertical-align: middle;
   transition: transform 0.2s ease;
+  margin-right: 8px;
+  flex-shrink: 0;
 }
 
 .button:hover .mail-icon {
