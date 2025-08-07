@@ -34,11 +34,12 @@
   position: relative;
   overflow: hidden;
 
-  // Pagination arrow styling
+  // Pagination arrow styling - visible by default
   .pagination-arrow-left,
   .pagination-arrow-right {
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     display: inline-block;
+    opacity: 1;
     flex-shrink: 0;
   }
 
@@ -131,9 +132,10 @@
   // Pagination arrow styling for disabled state
   .pagination-arrow-left,
   .pagination-arrow-right {
-    transition: transform 0.2s ease;
-    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: none; // Hide icons in disabled state
     flex-shrink: 0;
+    opacity: 0;
   }
 }
 
