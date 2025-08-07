@@ -31,11 +31,6 @@
   box-shadow: none !important;
 }
 
-/* Allow background images for post images */
-.post-image {
-  background-image: initial !important; /* Allow inline styles to override */
-}
-
 /* Responsive design */
 @media (min-width: 1400px) {
   .posts {
@@ -134,6 +129,10 @@
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
   text-decoration: none !important;
+}
+
+/* Specifically exclude image elements from background override */
+.post-card a:not(.post-image) {
   background: transparent !important;
 }
 
@@ -181,6 +180,49 @@
   position: relative;
   /* Allow inline background-image styles to work properly */
   background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Ensure post-image can have background-image despite other rules */
+.post-image[style*="background-image"] {
+  background: inherit !important;
+}
+
+/* Force background-image to work with higher specificity */
+.post-card .post-image-section .post-image[style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Ultimate override for inline background-image styles */
+.post-card .post-link-wrapper .post-image-section .post-image[style*="background-image"] {
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  /* Don't override background-image, let inline styles work */
+}
+
+/* Ensure images in post cards can display properly */
+.post-card .post-image,
+.post-card .post-link-wrapper .post-image,
+.post-card .post-image-section .post-image {
+  /* Reset any background overrides specifically for images */
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  /* Allow inline background-image to work */
+}
+
+/* Override global link styles for post images */
+.post-card .post-link-wrapper .post-image {
+  background-image: inherit !important; /* Allow inline styles */
+  text-shadow: none !important;
+}
+
+.post-card .post-link-wrapper:hover .post-image,
+.post-card .post-link-wrapper:focus .post-image,
+.post-card .post-link-wrapper:active .post-image {
+  background-image: inherit !important; /* Allow inline styles */
+  text-shadow: none !important;
 }
 
 /* Ensure images show even when url is empty - fallback background */
@@ -332,7 +374,7 @@
   background: transparent !important;
 }
 
-.post-link-wrapper *,
+.post-link-wrapper *:not(.post-image),
 .post-link-wrapper::before,
 .post-link-wrapper::after {
   background: transparent !important;
