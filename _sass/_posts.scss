@@ -348,7 +348,7 @@ div.post-image[style*="background-image: url"] {
   display: none !important;
 }
 
-.post-content-section *:not(.post-image):not(.post-image-section) {
+.post-content-section *:not(.post-image):not(.post-image-section):not(.post-date-badge) {
   background-color: transparent !important;
   background-image: none !important;
   border: none !important;
@@ -397,7 +397,7 @@ div.post-image[style*="background-image: url"] {
   background: transparent !important;
 }
 
-.post-link-wrapper *:not(.post-image):not(.post-image-section),
+.post-link-wrapper *:not(.post-image):not(.post-image-section):not(.post-date-badge),
 .post-link-wrapper::before,
 .post-link-wrapper::after {
   background-color: transparent !important;
