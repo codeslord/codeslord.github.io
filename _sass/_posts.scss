@@ -264,10 +264,20 @@
     height: 16px;
     transition: transform 0.2s ease;
   }
+
+  .book-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
 }
 
 .post-link-wrapper:hover .read-more-icon {
   transform: translateX(4px);
+}
+
+.post-link-wrapper:hover .book-icon {
+  transform: scale(1.1);
 }
 
 // Date Badge
@@ -287,6 +297,11 @@
   position: relative;
   z-index: 2;
   transition: all 0.2s ease;
+  gap: 0.5rem;
+
+  .date-icon {
+    flex-shrink: 0;
+  }
 }
 
 // Category Badge

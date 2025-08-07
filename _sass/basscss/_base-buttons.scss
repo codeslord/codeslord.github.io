@@ -27,3 +27,14 @@ button,
   text-decoration: none;
   border: 1px solid transparent;
 }
+
+// Button icon styling
+.button .mail-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.button:hover .mail-icon {
+  transform: scale(1.1);
+}
