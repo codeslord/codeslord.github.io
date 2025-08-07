@@ -7,16 +7,23 @@ layout: default
   {% if posts_count > 0 %}
     <div class="posts">
       {% for post in paginator.posts %}
-        <!-- Extract first image URL - improved approach -->
+        <!-- Extract first image URL - robust approach -->
         {% assign image_url = '' %}
         {% assign img_tag_start = post.content | split: '<img' | first %}
         {% unless img_tag_start == post.content %}
           {% assign img_tag = post.content | split: '<img' %}
           {% for img_part in img_tag %}
             {% if forloop.index > 1 %}
+              <!-- Try double quotes first -->
               {% assign src_part = img_part | split: 'src="' %}
               {% if src_part.size > 1 %}
                 {% assign image_url = src_part[1] | split: '"' | first %}
+                {% break %}
+              {% endif %}
+              <!-- Try single quotes as fallback -->
+              {% assign src_part = img_part | split: "src='" %}
+              {% if src_part.size > 1 %}
+                {% assign image_url = src_part[1] | split: "'" | first %}
                 {% break %}
               {% endif %}
             {% endif %}
@@ -60,7 +67,6 @@ layout: default
         <article class="post-card">
           <a href="{{ post.url | relative_url }}" class="post-link-wrapper">
             <!-- Image Section -->
-            <!-- Debug: image_url = "{{ image_url }}" -->
             {% if image_url != '' and image_url != blank %}
             <div class="post-image-section" data-image-url="{{ image_url }}">
               <div class="post-image" style="background-image: url('{{ image_url }}');"></div>

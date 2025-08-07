@@ -33,7 +33,7 @@
 
 /* Allow background images for post images */
 .post-image {
-  background-image: inherit !important;
+  background-image: initial !important; /* Allow inline styles to override */
 }
 
 /* Responsive design */
@@ -179,9 +179,7 @@
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
   position: relative;
-  /* Ensure any inline background-image style is respected */
-  background-image: inherit !important;
-  /* Fallback background for better visibility */
+  /* Allow inline background-image styles to work properly */
   background-color: rgba(99, 102, 241, 0.1);
 }
 
