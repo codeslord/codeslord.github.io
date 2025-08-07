@@ -27,7 +27,8 @@
     0 4px 15px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-weight: 500;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
   position: relative;
@@ -38,6 +39,7 @@
   .pagination-arrow-right {
     transition: transform 0.2s ease;
     display: inline-block;
+    flex-shrink: 0;
   }
 
   &:hover .pagination-arrow-left {
@@ -49,6 +51,61 @@
   }
 }
 
+// Support for pagination-item class specifically
+.pagination .pagination-item {
+  -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #333333;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+
+  // Pagination arrow styling
+  .pagination-arrow-left,
+  .pagination-arrow-right {
+    transition: transform 0.2s ease;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  &:hover .pagination-arrow-left {
+    transform: translateX(-2px);
+  }
+
+  &:hover .pagination-arrow-right {
+    transform: translateX(2px);
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #666;
+    cursor: not-allowed;
+
+    &:hover .pagination-arrow-left,
+    &:hover .pagination-arrow-right {
+      transform: none;
+    }
+  }
+}
+
 .pagination .disabled {
   opacity: 0.6;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
@@ -57,6 +114,27 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #666;
   cursor: not-allowed;
+
+  // Ensure disabled pagination items inherit flex alignment
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: $button-line-height;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+
+  // Pagination arrow styling for disabled state
+  .pagination-arrow-left,
+  .pagination-arrow-right {
+    transition: transform 0.2s ease;
+    display: inline-block;
+    flex-shrink: 0;
+  }
 }
 
 .pagination .pagination-meta {
