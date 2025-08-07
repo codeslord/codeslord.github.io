@@ -11,3 +11,4 @@ Gemfile.lock
 .github/
 DESIGN_IMPROVEMENTS.md
 DARK_MODE.md
+node_modules/

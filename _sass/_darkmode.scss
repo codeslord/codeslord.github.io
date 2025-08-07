@@ -1,50 +1,24 @@
 /* Dark Mode Theme Styles with 3D Elements */
 
-/* Theme Toggle Button */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  margin-left: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  z-index: 1000;
-  color: currentColor;
-}
-
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.1);
-}
-
-.theme-toggle:focus {
-  outline: 2px solid rgba(99, 102, 241, 0.5);
-  outline-offset: 2px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .theme-toggle:focus {
-  outline-color: rgba(139, 92, 246, 0.7);
-  background: rgba(255, 255, 255, 0.1);
-}
-
+/* Theme Toggle Icon Display Logic */
 .theme-toggle-icon {
   transition: transform 0.3s ease;
   display: none;
 }
 
-.theme-toggle-icon.theme-icon-dark {
+.theme-toggle-icon.theme-icon-light {
   display: block;
 }
 
+.theme-toggle-icon.theme-icon-dark {
+  display: none;
+}
+
 [data-theme="dark"] .theme-toggle-icon.theme-icon-light {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle-icon.theme-icon-dark {
   display: block;
 }
 
