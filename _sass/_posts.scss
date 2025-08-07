@@ -132,8 +132,9 @@
 }
 
 /* Specifically exclude image elements from background override */
-.post-card a:not(.post-image) {
-  background: transparent !important;
+.post-card a:not(.post-image):not(.post-image-section) {
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .post-card:active {
@@ -182,47 +183,62 @@
   background-color: rgba(99, 102, 241, 0.1);
 }
 
-/* Ensure post-image can have background-image despite other rules */
-.post-image[style*="background-image"] {
-  background: inherit !important;
-}
+/* Ensure post-image can have background-image despite other rules - REMOVED CONFLICTING RULE */
 
 /* Force background-image to work with higher specificity */
 .post-card .post-image-section .post-image[style*="background-image"] {
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
+  /* Do NOT override background-image here */
 }
 
 /* Ultimate override for inline background-image styles */
 .post-card .post-link-wrapper .post-image-section .post-image[style*="background-image"] {
   background-color: rgba(99, 102, 241, 0.1) !important;
-  /* Don't override background-image, let inline styles work */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  /* Do NOT set background or background-image here - let inline styles work */
 }
 
-/* Ensure images in post cards can display properly */
+/* Ensure images in post cards can display properly - SIMPLIFIED */
 .post-card .post-image,
 .post-card .post-link-wrapper .post-image,
 .post-card .post-image-section .post-image {
-  /* Reset any background overrides specifically for images */
+  /* Only set essential background properties, avoid conflicts */
   background-color: rgba(99, 102, 241, 0.1) !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  /* Allow inline background-image to work */
+  /* Do NOT set background or background-image - let inline styles work */
 }
 
-/* Override global link styles for post images */
-.post-card .post-link-wrapper .post-image {
-  background-image: inherit !important; /* Allow inline styles */
-  text-shadow: none !important;
+/* CRITICAL: Allow inline background-image to override everything */
+.post-card .post-link-wrapper .post-image[style*="background-image"],
+.post-card .post-image-section .post-image[style*="background-image"] {
+  /* Remove any background overrides and let inline styles work */
+  background-color: transparent !important;
 }
 
-.post-card .post-link-wrapper:hover .post-image,
-.post-card .post-link-wrapper:focus .post-image,
-.post-card .post-link-wrapper:active .post-image {
-  background-image: inherit !important; /* Allow inline styles */
-  text-shadow: none !important;
+/* MAXIMUM SPECIFICITY: Force inline background-image to work */
+.post-card .post-link-wrapper .post-image-section .post-image[style*="background-image"],
+.posts .post-card .post-link-wrapper .post-image-section .post-image[style*="background-image"] {
+  /* Let inline background-image work, only override other properties */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  /* Do NOT touch background-image or background shorthand */
+}
+
+/* ULTIMATE DEBUG RULE - This should definitely work */
+div.post-image[style*="background-image: url"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: rgba(99, 102, 241, 0.1) !important;
+  /* Let the inline background-image style work */
 }
 
 /* Ensure images show even when url is empty - fallback background */
@@ -326,8 +342,9 @@
   display: none !important;
 }
 
-.post-content-section * {
-  background: transparent !important;
+.post-content-section *:not(.post-image):not(.post-image-section) {
+  background-color: transparent !important;
+  background-image: none !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -374,10 +391,11 @@
   background: transparent !important;
 }
 
-.post-link-wrapper *:not(.post-image),
+.post-link-wrapper *:not(.post-image):not(.post-image-section),
 .post-link-wrapper::before,
 .post-link-wrapper::after {
-  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
   border: none !important;
   box-shadow: none !important;
 }
