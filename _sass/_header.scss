@@ -74,6 +74,20 @@
 .site-nav {
   padding-top: $nav-padding;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Ensure navigation links display properly alongside theme toggle */
+.site-nav a:not(.theme-toggle) {
+  order: 1;
+}
+
+.theme-toggle {
+  order: 2;
 }
 
 .site-header nav a {
