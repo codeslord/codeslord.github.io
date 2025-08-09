@@ -262,17 +262,22 @@ small {
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
-  color: #f8fafc !important;
+  color: #f8fafc;
 }
 
+/* Apply text color to common elements, but exclude code highlighting elements */
 [data-theme="dark"] p,
-[data-theme="dark"] span,
-[data-theme="dark"] div,
 [data-theme="dark"] li,
 [data-theme="dark"] td,
 [data-theme="dark"] th,
 [data-theme="dark"] label {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
+}
+
+/* Apply text color to spans and divs that are not inside code blocks */
+[data-theme="dark"] span:not(.highlight span):not(pre span):not(code span),
+[data-theme="dark"] div:not(.highlight div):not(pre div):not(code div) {
+  color: #e2e8f0;
 }
 
 [data-theme="dark"] .site-header {
@@ -281,17 +286,17 @@ small {
 }
 
 [data-theme="dark"] .site-title {
-  color: var(--text-color) !important;
+  color: var(--text-color);
   text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] .site-nav a {
-  color: var(--text-color) !important;
+  color: var(--text-color);
   transition: color 0.3s ease;
 }
 
 [data-theme="dark"] .site-nav a:hover {
-  color: var(--link-color) !important;
+  color: var(--link-color);
   text-shadow: 0 0 5px currentColor;
 }
 
@@ -507,17 +512,17 @@ small {
 [data-theme="dark"] .post,
 [data-theme="dark"] .wrap,
 [data-theme="dark"] .measure {
-  color: var(--text-color) !important;
+  color: var(--text-color);
 }
 
 /* Ensure all children inherit the dark mode color unless specifically overridden */
 [data-theme="dark"] .post *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.bg-3d *):not(.highlight *):not(pre *):not(code *) {
-  color: inherit !important;
+  color: inherit;
 }
 
-/* Fix any remaining light-colored text in dark mode */
-[data-theme="dark"] .post *[style*="color"] {
-  color: var(--text-color) !important;
+/* Fix any remaining light-colored text in dark mode, but exclude code elements */
+[data-theme="dark"] .post *[style*="color"]:not(.highlight *):not(pre *):not(code *) {
+  color: var(--text-color);
 }
 
 /* Dark Mode Code Blocks */
@@ -598,6 +603,9 @@ small {
 [data-theme="dark"] .highlight .nf,
 [data-theme="dark"] .highlight .fm {
   color: #d2a8ff; /* functions/decorators */
+}
+[data-theme="dark"] .highlight .n {
+  color: #c9d1d9; /* general names */
 }
 [data-theme="dark"] .highlight .nb,
 [data-theme="dark"] .highlight .bp,
