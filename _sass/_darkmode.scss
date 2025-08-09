@@ -1,4 +1,4 @@
-/* Dark Mode Theme Styles with 3D Elements */
+/* Dark Mode Theme Styles */
 
 /* Dark Mode CSS Custom Properties for Performance */
 [data-theme="dark"] {
@@ -51,131 +51,6 @@
 
 .theme-toggle:hover .theme-toggle-icon {
   transform: rotate(15deg);
-}
-
-/* 3D Background Elements - Hidden by default, shown in dark mode */
-.bg-3d {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0;
-  overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #0f0f23 0%,
-    #1a1a2e 25%,
-    #16213e 50%,
-    #0f0f23 75%,
-    #1a1a2e 100%
-  );
-  /* Performance optimizations */
-  will-change: opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-/* Floating Elements */
-.floating-elements {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* Performance optimizations */
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-.floating-element {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.8), rgba(99, 102, 241, 0.2));
-  border-radius: 50%;
-  box-shadow: 
-    0 0 10px rgba(99, 102, 241, 0.5),
-    0 0 20px rgba(99, 102, 241, 0.3),
-    0 0 30px rgba(99, 102, 241, 0.1);
-  animation: twinkle 3s ease-in-out infinite alternate;
-  /* Performance optimizations */
-  will-change: transform, opacity;
-  transform: translateZ(0);
-}
-
-.floating-element:nth-child(odd) {
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.8), rgba(139, 92, 246, 0.2));
-  box-shadow: 
-    0 0 10px rgba(139, 92, 246, 0.5),
-    0 0 20px rgba(139, 92, 246, 0.3),
-    0 0 30px rgba(139, 92, 246, 0.1);
-}
-
-.floating-element:nth-child(3n) {
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.8), rgba(16, 185, 129, 0.2));
-  box-shadow: 
-    0 0 10px rgba(16, 185, 129, 0.5),
-    0 0 20px rgba(16, 185, 129, 0.3),
-    0 0 30px rgba(16, 185, 129, 0.1);
-}
-
-@keyframes twinkle {
-  0% { opacity: 0.3; transform: scale(1); }
-  100% { opacity: 1; transform: scale(1.2); }
-}
-
-/* Geometric Shapes */
-.geometric-shapes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.shape {
-  position: absolute;
-  opacity: 0.1;
-  border-radius: 4px;
-}
-
-.shape-cube {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(45deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
-  top: 20%;
-  left: 10%;
-  transform-style: preserve-3d;
-}
-
-.shape-sphere {
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.4), rgba(16, 185, 129, 0.1));
-  border-radius: 50%;
-  top: 60%;
-  right: 15%;
-}
-
-.shape-pyramid {
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 50px solid rgba(239, 68, 68, 0.3);
-  top: 30%;
-  right: 30%;
-  border-radius: 0;
-}
-
-.shape-torus {
-  width: 50px;
-  height: 50px;
-  border: 8px solid rgba(245, 101, 101, 0.3);
-  border-radius: 50%;
-  background: transparent;
-  top: 70%;
-  left: 20%;
 }
 
 /* Light Mode Text Colors (ensuring proper contrast) */
@@ -255,10 +130,6 @@ small {
   --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .bg-3d {
-  opacity: 1;
-}
-
 /* Global Dark Mode Styles */
 [data-theme="dark"] body {
   background-color: var(--bg-color);
@@ -267,7 +138,7 @@ small {
 }
 
 /* Global text color inheritance for dark mode */
-[data-theme="dark"] *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.bg-3d *) {
+[data-theme="dark"] *:not(.category-icon):not(.theme-toggle):not(.post-image) {
   color: inherit;
 }
 
@@ -549,7 +420,7 @@ small {
 }
 
 /* Ensure all children inherit the dark mode color unless specifically overridden */
-[data-theme="dark"] .post *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.bg-3d *):not(.highlight *):not(pre *):not(code *) {
+[data-theme="dark"] .post *:not(.category-icon):not(.theme-toggle):not(.post-image):not(.highlight *):not(pre *):not(code *) {
   color: inherit;
 }
 
@@ -855,27 +726,6 @@ small {
     flex-direction: column;
     gap: 1rem;
   }
-  
-  .floating-element {
-    width: 2px;
-    height: 2px;
-  }
-  
-  .shape-cube {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .shape-sphere {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .shape-torus {
-    width: 35px;
-    height: 35px;
-    border-width: 4px;
-  }
 }
 
 /* Very small screens - adjust navigation layout */
@@ -930,29 +780,17 @@ small {
   border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
-/* Enhance the 3D effect in dark mode */
-[data-theme="dark"] .post-card {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
 [data-theme="dark"] .post-card:hover {
-  transform: translateY(-12px) scale(1.03) rotateX(5deg);
+  transform: translateY(-5px) scale(1.02);
 }
 
 /* Accessibility: Reduced motion support for better performance */
 @media (prefers-reduced-motion: reduce) {
-  .floating-element,
-  .shape,
   .theme-toggle,
   .post-card {
     animation: none;
     transition: none;
     transform: none;
-  }
-  
-  .bg-3d {
-    display: none;
   }
   
   [data-theme="dark"] .post-card:hover {

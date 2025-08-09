@@ -22,8 +22,7 @@
 /* Will-change for better performance on animated elements */
 .post-card,
 .theme-toggle,
-.category-icon,
-.floating-element {
+.category-icon {
   will-change: transform;
 }
 

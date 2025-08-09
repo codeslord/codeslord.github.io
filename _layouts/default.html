@@ -17,24 +17,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		}(document, 'script', 'facebook-jssdk'));</script>
 	{% endif %}
 
-  <!-- 3D Background Elements for Dark Mode -->
-  <div id="bg-3d" class="bg-3d">
-    <div class="floating-elements">
-      <div class="floating-element" data-speed="0.5"></div>
-      <div class="floating-element" data-speed="0.8"></div>
-      <div class="floating-element" data-speed="0.3"></div>
-      <div class="floating-element" data-speed="0.6"></div>
-      <div class="floating-element" data-speed="0.4"></div>
-      <div class="floating-element" data-speed="0.7"></div>
-    </div>
-    <div class="geometric-shapes">
-      <div class="shape shape-cube"></div>
-      <div class="shape shape-sphere"></div>
-      <div class="shape shape-pyramid"></div>
-      <div class="shape shape-torus"></div>
-    </div>
-  </div>
-
   <div class="site-wrap home">
     {% include header.html %}
 
@@ -47,15 +29,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   {% include footer.html %}
 
-  <!-- Dark Mode & 3D Animation Script -->
+  <!-- Dark Mode Script -->
   <script>
     // Theme management
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const bg3d = document.getElementById('bg-3d');
     
-    // Check for saved theme or default to dark mode
-    const currentTheme = localStorage.getItem('theme') || 'dark';
+    // Check for saved theme or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
     
     // Update toggle icon based on theme
     function updateToggleIcon(theme) {
@@ -83,116 +64,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       body.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateToggleIcon(newTheme);
-      
-      // Trigger theme transition animation
-      animateThemeTransition(newTheme);
-    });
-    
-    // 3D Animation functions using Anime.js
-    function initFloatingElements() {
-      const elements = document.querySelectorAll('.floating-element');
-      
-      elements.forEach((el, index) => {
-        // Random initial positions
-        el.style.left = Math.random() * 100 + '%';
-        el.style.top = Math.random() * 100 + '%';
-        
-        // Create floating animation
-        anime({
-          targets: el,
-          translateX: () => anime.random(-200, 200),
-          translateY: () => anime.random(-200, 200),
-          scale: [1, 1.2, 1],
-          rotate: () => anime.random(0, 360),
-          duration: () => anime.random(8000, 15000),
-          easing: 'easeInOutSine',
-          loop: true,
-          direction: 'alternate',
-          delay: index * 1000
-        });
-      });
-    }
-    
-    function initGeometricShapes() {
-      const shapes = document.querySelectorAll('.shape');
-      
-      shapes.forEach((shape, index) => {
-        anime({
-          targets: shape,
-          rotateX: 360,
-          rotateY: 360,
-          rotateZ: 180,
-          duration: () => anime.random(10000, 20000),
-          easing: 'linear',
-          loop: true,
-          delay: index * 2000
-        });
-      });
-    }
-    
-    function animateThemeTransition(theme) {
-      // Animate the background transition
-      anime({
-        targets: bg3d,
-        opacity: theme === 'dark' ? [0, 1] : [1, 0],
-        duration: 800,
-        easing: 'easeInOutQuart'
-      });
-      
-      // Animate page elements
-      anime({
-        targets: '.post-card, .site-header, .post',
-        scale: [0.98, 1],
-        duration: 600,
-        easing: 'easeOutElastic(1, .8)',
-        delay: anime.stagger(50)
-      });
-    }
-    
-    // Scroll-based animations for dark mode
-    function initScrollAnimations() {
-      if (body.getAttribute('data-theme') === 'dark') {
-        window.addEventListener('scroll', () => {
-          const scrolled = window.pageYOffset;
-          const rate = scrolled * -0.5;
-          
-          // Parallax effect for floating elements
-          document.querySelectorAll('.floating-element').forEach((el, index) => {
-            const speed = parseFloat(el.dataset.speed) || 0.5;
-            anime.set(el, {
-              transform: `translateY(${rate * speed}px) rotate(${scrolled * 0.1}deg)`
-            });
-          });
-          
-          // 3D shapes rotation based on scroll
-          document.querySelectorAll('.shape').forEach((shape, index) => {
-            anime.set(shape, {
-              transform: `rotateY(${scrolled * 0.2}deg) rotateX(${scrolled * 0.1}deg)`
-            });
-          });
-        });
-      }
-    }
-    
-    // Initialize everything when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      initFloatingElements();
-      initGeometricShapes();
-      initScrollAnimations();
-      
-      // Re-initialize scroll animations on theme change
-      themeToggle.addEventListener('click', () => {
-        setTimeout(initScrollAnimations, 100);
-      });
-    });
-    
-    // Resize handler for responsive 3D elements
-    window.addEventListener('resize', () => {
-      const elements = document.querySelectorAll('.floating-element');
-      elements.forEach(el => {
-        el.style.left = Math.random() * 100 + '%';
-        el.style.top = Math.random() * 100 + '%';
-      });
     });
   </script>
 </body>
