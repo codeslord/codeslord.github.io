@@ -138,7 +138,7 @@ Consider a two-link planar robot arm:
 4. **Calculate Joint Torques**:
     The joint torques $$\tau$$ can be calculated using the transpose of the Jacobian matrix:
     $$
-    	au = J^T F
+    \tau = J^T F
     $$
 
 ### Implementation in Python
@@ -217,8 +217,8 @@ The inverse kinematics involves finding the joint angles $$\theta_1$$ and $$\the
 
 $$
 \begin{aligned}
-	heta_2 &= \arccos\left(\frac{x^2 + y^2 - l_1^2 - l_2^2}{2 l_1 l_2}\right) \\
-	heta_1 &= \arctan2(y, x) - \arctan2\left(\frac{l_2 \sin(\theta_2)}{l_1 + l_2 \cos(\theta_2)}\right)
+\theta_2 &= \arccos\left(\frac{x^2 + y^2 - l_1^2 - l_2^2}{2 l_1 l_2}\right) \\
+\theta_1 &= \arctan2(y, x) - \arctan2\left(\frac{l_2 \sin(\theta_2)}{l_1 + l_2 \cos(\theta_2)}\right)
 \end{aligned}
 $$
 
@@ -229,19 +229,19 @@ Inverse dynamics calculates the joint torques $$\tau_1$$ and $$\tau_2$$ needed t
 
 $$
 \begin{aligned}
-	au_1 &= I_1 \ddot{\theta}_1 + I_2 \left(\ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 c_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_2 - m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_2 \left( 2 \dot{\theta}_1 + \dot{\theta}_2 \right) \right) + (m_1 l_1 + m_2 l_1 + m_2 l_2 \cos(\theta_2)) g \cos(\theta_1) \\
-	au_2 &= I_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2 \right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_1 + m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_1^2 \right) + m_2 l_2 g \cos(\theta_1 + \theta_2)
+\tau_1 &= I_1 \ddot{\theta}_1 + I_2 \left(\ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 c_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_2 - m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_2 \left( 2 \dot{\theta}_1 + \dot{\theta}_2 \right) \right) + (m_1 l_1 + m_2 l_1 + m_2 l_2 \cos(\theta_2)) g \cos(\theta_1) \\
+\tau_2 &= I_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2 \right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_1 + m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_1^2 \right) + m_2 l_2 g \cos(\theta_1 + \theta_2)
 \end{aligned}
 $$
 
 Where:
-- $I_1$ and $I_2$ are the moments of inertia.
-- $\ddot{\theta}_1$ and $\ddot{\theta}_2$ are the joint accelerations.
-- $m_1$ and $m_2$ are the masses of the links.
-- $g$ is the acceleration due to gravity.
+- $$I_1$$ and $$I_2$$ are the moments of inertia.
+- $$\ddot{\theta}_1$$ and $$\ddot{\theta}_2$$ are the joint accelerations.
+- $$m_1$$ and $$m_2$$ are the masses of the links.
+- $$g$$ is the acceleration due to gravity.
 
 ### Jacobian Matrix
-The Jacobian matrix $J$ relates the end-effector velocities to the joint velocities. For a two-link arm, it is given by:
+The Jacobian matrix $$J$$ relates the end-effector velocities to the joint velocities. For a two-link arm, it is given by:
 
 $$
 J = \begin{bmatrix}
@@ -255,7 +255,7 @@ $$
 To convert end-effector forces $$F$$ to joint torques $$\tau$$, use the transpose of the Jacobian matrix:
 
 $$
-	au = J^T F
+\tau = J^T F
 $$
 
 
