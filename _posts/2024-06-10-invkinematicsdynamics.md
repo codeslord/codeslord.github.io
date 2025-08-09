@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Machine Teaching Part - Inverse Kinematics and Inverse Dynamics
+title: Inverse Kinematics and Inverse Dynamics
 date: 2024-06-10 11:42
 summary: Inverse kinematics is used to determine the joint angles (positions) required to place the robot's end-effector at a desired position and orientation in space.Inverse dynamics is used to calculate the required joint torques or forces to achieve a specific motion, considering the dynamics of the robot, such as mass, inertia, and external forces.
 categories: General
