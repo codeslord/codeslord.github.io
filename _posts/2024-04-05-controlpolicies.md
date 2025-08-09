@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linear and Non-linear control
-date: 2024-06-02 11:00
+date: 2024-04-05 11:00
 summary: Linear and Non Linear control policies.
 categories: General
 ---
