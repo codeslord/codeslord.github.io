@@ -78,12 +78,12 @@ Yes, it is possible to generate a dataset for a two-link robot arm using ridge r
 
 ### Kinematic Model of the Two-Link Robot Arm
 
-Assume the two-link robot arm has lengths \( l_1 \) and \( l_2 \). The forward kinematics can be described as:
+Assume the two-link robot arm has lengths $l_1$ and $l_2$. The forward kinematics can be described as:
 
-\[ x = l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) \]
-\[ y = l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2) \]
+$$ x = l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) $$
+$$ y = l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2) $$
 
-Given a target point \((x, y)\), the inverse kinematics can be derived to find the joint angles \(\theta_1\) and \(\theta_2\).
+Given a target point $(x, y)$, the inverse kinematics can be derived to find the joint angles $\theta_1$ and $\theta_2$.
 
 Multiple Solutions
 
@@ -110,36 +110,36 @@ This method involves using the transpose of the Jacobian matrix, which relates t
 Consider a two-link planar robot arm:
 
 1. **Forward Kinematics**:
-    \[
-    \begin{align*}
+    $$
+    \begin{aligned}
     x &= l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) \\
     y &= l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2)
-    \end{align*}
-    \]
+    \end{aligned}
+    $$
 
 2. **Jacobian Matrix**:
-    The Jacobian matrix \( J \) for a two-link planar robot arm is:
-    \[
+    The Jacobian matrix $J$ for a two-link planar robot arm is:
+    $$
     J = \begin{bmatrix}
     -l_1 \sin(\theta_1) - l_2 \sin(\theta_1 + \theta_2) & -l_2 \sin(\theta_1 + \theta_2) \\
     l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) & l_2 \cos(\theta_1 + \theta_2)
     \end{bmatrix}
-    \]
+    $$
 
 3. **Apply Force to the End-Effector**:
-    Let \( F \) be the force vector applied to the end-effector:
-    \[
+    Let $F$ be the force vector applied to the end-effector:
+    $$
     F = \begin{bmatrix}
     F_x \\
     F_y
     \end{bmatrix}
-    \]
+    $$
 
 4. **Calculate Joint Torques**:
-    The joint torques \( \tau \) can be calculated using the transpose of the Jacobian matrix:
-    \[
-    \tau = J^T F
-    \]
+    The joint torques $\tau$ can be calculated using the transpose of the Jacobian matrix:
+    $$
+    	au = J^T F
+    $$
 
 ### Implementation in Python
 
@@ -201,62 +201,62 @@ Certainly! Here is a detailed explanation of inverse kinematics and inverse dyna
 #### Forward Kinematics
 The forward kinematics equations for a two-link planar robot arm are:
 
-\[
-\begin{align*}
+$$
+\begin{aligned}
 x &= l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) \\
 y &= l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2)
-\end{align*}
-\]
+\end{aligned}
+$$
 
 Where:
-- \( l_1 \) and \( l_2 \) are the lengths of the two links.
-- \( \theta_1 \) and \( \theta_2 \) are the joint angles.
+- $l_1$ and $l_2$ are the lengths of the two links.
+- $\theta_1$ and $\theta_2$ are the joint angles.
 
 #### Inverse Kinematics
-The inverse kinematics involves finding the joint angles \(\theta_1\) and \(\theta_2\) for a given end-effector position \((x, y)\). The equations are:
+The inverse kinematics involves finding the joint angles $\theta_1$ and $\theta_2$ for a given end-effector position $(x, y)$. The equations are:
 
-\[
-\begin{align*}
-\theta_2 &= \arccos\left(\frac{x^2 + y^2 - l_1^2 - l_2^2}{2 l_1 l_2}\right) \\
-\theta_1 &= \arctan2(y, x) - \arctan2\left(\frac{l_2 \sin(\theta_2)}{l_1 + l_2 \cos(\theta_2)}\right)
-\end{align*}
-\]
+$$
+\begin{aligned}
+	heta_2 &= \arccos\left(\frac{x^2 + y^2 - l_1^2 - l_2^2}{2 l_1 l_2}\right) \\
+	heta_1 &= \arctan2(y, x) - \arctan2\left(\frac{l_2 \sin(\theta_2)}{l_1 + l_2 \cos(\theta_2)}\right)
+\end{aligned}
+$$
 
 ### Dynamics of a Two-Link Robot Arm
 
 #### Inverse Dynamics
 Inverse dynamics calculates the joint torques \(\tau_1\) and \(\tau_2\) needed to achieve a desired motion. The equations involve mass \(m\), inertia \(I\), and other physical properties:
 
-\[
-\begin{align*}
-\tau_1 &= I_1 \ddot{\theta}_1 + I_2 \left(\ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 c_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_2 - m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_2 \left( 2 \dot{\theta}_1 + \dot{\theta}_2 \right) \right) + (m_1 l_1 + m_2 l_1 + m_2 l_2 \cos(\theta_2)) g \cos(\theta_1) \\
-\tau_2 &= I_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2 \right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_1 + m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_1^2 \right) + m_2 l_2 g \cos(\theta_1 + \theta_2)
-\end{align*}
-\]
+$$
+\begin{aligned}
+	au_1 &= I_1 \ddot{\theta}_1 + I_2 \left(\ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 c_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2\right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_2 - m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_2 \left( 2 \dot{\theta}_1 + \dot{\theta}_2 \right) \right) + (m_1 l_1 + m_2 l_1 + m_2 l_2 \cos(\theta_2)) g \cos(\theta_1) \\
+	au_2 &= I_2 \left( \ddot{\theta}_1 + \ddot{\theta}_2 \right) + m_2 l_1 l_2 \cos(\theta_2) \ddot{\theta}_1 + m_2 l_1 l_2 \sin(\theta_2) \left( \dot{\theta}_1^2 \right) + m_2 l_2 g \cos(\theta_1 + \theta_2)
+\end{aligned}
+$$
 
 Where:
-- \( I_1 \) and \( I_2 \) are the moments of inertia.
-- \( \ddot{\theta}_1 \) and \( \ddot{\theta}_2 \) are the joint accelerations.
-- \( m_1 \) and \( m_2 \) are the masses of the links.
-- \( g \) is the acceleration due to gravity.
+- $I_1$ and $I_2$ are the moments of inertia.
+- $\ddot{\theta}_1$ and $\ddot{\theta}_2$ are the joint accelerations.
+- $m_1$ and $m_2$ are the masses of the links.
+- $g$ is the acceleration due to gravity.
 
 ### Jacobian Matrix
-The Jacobian matrix \( J \) relates the end-effector velocities to the joint velocities. For a two-link arm, it is given by:
+The Jacobian matrix $J$ relates the end-effector velocities to the joint velocities. For a two-link arm, it is given by:
 
-\[
+$$
 J = \begin{bmatrix}
--\l_1 \sin(\theta_1) - l_2 \sin(\theta_1 + \theta_2) & -l_2 \sin(\theta_1 + \theta_2) \\
-\l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) & l_2 \cos(\theta_1 + \theta_2)
+-l_1 \sin(\theta_1) - l_2 \sin(\theta_1 + \theta_2) & -l_2 \sin(\theta_1 + \theta_2) \\
+l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) & l_2 \cos(\theta_1 + \theta_2)
 \end{bmatrix}
-\]
+$$
 
 ### Converting End-Effector Forces to Joint Torques
 
-To convert end-effector forces \( F \) to joint torques \( \tau \), use the transpose of the Jacobian matrix:
+To convert end-effector forces $F$ to joint torques $\tau$, use the transpose of the Jacobian matrix:
 
-\[
-\tau = J^T F
-\]
+$$
+	au = J^T F
+$$
 
 
 
