@@ -78,12 +78,12 @@ Yes, it is possible to generate a dataset for a two-link robot arm using ridge r
 
 ### Kinematic Model of the Two-Link Robot Arm
 
-Assume the two-link robot arm has lengths $l_1$ and $l_2$. The forward kinematics can be described as:
+Assume the two-link robot arm has lengths $$ l_1 $$ and $$ l_2 $$. The forward kinematics can be described as:
 
 $$ x = l_1 \cos(\theta_1) + l_2 \cos(\theta_1 + \theta_2) $$
 $$ y = l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2) $$
 
-Given a target point $(x, y)$, the inverse kinematics can be derived to find the joint angles $\theta_1$ and $\theta_2$.
+Given a target point $$(x, y)$$, the inverse kinematics can be derived to find the joint angles $$\theta_1$$ and $$\theta_2$$.
 
 Multiple Solutions
 
@@ -101,7 +101,7 @@ This method involves using the transpose of the Jacobian matrix, which relates t
 
 ### Steps to Calculate Joint Torques from End-Effector Forces
 
-1. **Determine the Jacobian Matrix**: The Jacobian matrix \( J \) relates the joint velocities to the end-effector velocities.
+1. **Determine the Jacobian Matrix**: The Jacobian matrix $$ J $$ relates the joint velocities to the end-effector velocities.
 2. **Apply the Force to the End-Effector**: Represent the force applied to the end-effector as a vector.
 3. **Calculate Joint Torques**: Use the transpose of the Jacobian matrix to calculate the joint torques from the end-effector force.
 
@@ -118,7 +118,7 @@ Consider a two-link planar robot arm:
     $$
 
 2. **Jacobian Matrix**:
-    The Jacobian matrix $J$ for a two-link planar robot arm is:
+    The Jacobian matrix $$ J $$ for a two-link planar robot arm is:
     $$
     J = \begin{bmatrix}
     -l_1 \sin(\theta_1) - l_2 \sin(\theta_1 + \theta_2) & -l_2 \sin(\theta_1 + \theta_2) \\
@@ -127,7 +127,7 @@ Consider a two-link planar robot arm:
     $$
 
 3. **Apply Force to the End-Effector**:
-    Let $F$ be the force vector applied to the end-effector:
+    Let $$ F $$ be the force vector applied to the end-effector:
     $$
     F = \begin{bmatrix}
     F_x \\
@@ -136,7 +136,7 @@ Consider a two-link planar robot arm:
     $$
 
 4. **Calculate Joint Torques**:
-    The joint torques $\tau$ can be calculated using the transpose of the Jacobian matrix:
+    The joint torques $$\tau$$ can be calculated using the transpose of the Jacobian matrix:
     $$
     	au = J^T F
     $$
@@ -209,11 +209,11 @@ y &= l_1 \sin(\theta_1) + l_2 \sin(\theta_1 + \theta_2)
 $$
 
 Where:
-- $l_1$ and $l_2$ are the lengths of the two links.
-- $\theta_1$ and $\theta_2$ are the joint angles.
+- $$ l_1 $$ and $$ l_2 $$ are the lengths of the two links.
+- $$\theta_1$$ and $$\theta_2$$ are the joint angles.
 
 #### Inverse Kinematics
-The inverse kinematics involves finding the joint angles $\theta_1$ and $\theta_2$ for a given end-effector position $(x, y)$. The equations are:
+The inverse kinematics involves finding the joint angles $$\theta_1$$ and $$\theta_2$$ for a given end-effector position $$(x, y)$$. The equations are:
 
 $$
 \begin{aligned}
@@ -225,7 +225,7 @@ $$
 ### Dynamics of a Two-Link Robot Arm
 
 #### Inverse Dynamics
-Inverse dynamics calculates the joint torques \(\tau_1\) and \(\tau_2\) needed to achieve a desired motion. The equations involve mass \(m\), inertia \(I\), and other physical properties:
+Inverse dynamics calculates the joint torques $$\tau_1$$ and $$\tau_2$$ needed to achieve a desired motion. The equations involve mass $$m$$, inertia $$I$$, and other physical properties:
 
 $$
 \begin{aligned}
@@ -252,7 +252,7 @@ $$
 
 ### Converting End-Effector Forces to Joint Torques
 
-To convert end-effector forces $F$ to joint torques $\tau$, use the transpose of the Jacobian matrix:
+To convert end-effector forces $$F$$ to joint torques $$\tau$$, use the transpose of the Jacobian matrix:
 
 $$
 	au = J^T F
