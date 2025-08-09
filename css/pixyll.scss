@@ -1,6 +1,7 @@
 ---
 # The scss file which include files from _sass/
 ---
+
 @charset "UTF-8";
 
 /*!
@@ -10,6 +11,21 @@
 * @link https://github.com/johnotander/pixyll
 * @license MIT
 */
+
+/* Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+/* Will-change for better performance on animated elements */
+.post-card,
+.theme-toggle,
+.category-icon,
+.floating-element {
+  will-change: transform;
+}
 
 @import 'variables';
 
@@ -38,3 +54,4 @@
 @import 'enhancements';
 @import 'icons';
 @import 'darkmode';
+@import 'performance-optimizations';

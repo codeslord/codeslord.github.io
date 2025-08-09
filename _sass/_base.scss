@@ -13,13 +13,27 @@ MIT License http://opensource.org/licenses/MIT
 
 */
 
-html, body {
+/* Optimized Base Styles for Better Performance */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, 
+body {
   height: auto;
   min-height: 100%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 img {
   max-width: 100%;
+  height: auto;
 }
 
 em img {
@@ -27,23 +41,15 @@ em img {
   margin-left: 0;
 }
 
-body {
-          box-sizing: border-box;
-     -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .profile {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--code-bg, rgba(255, 255, 255, 0.2));
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  width: 200px; /* Ensure width and height are equal for a round image */
-  height: auto; /* Ensure width and height are equal for a round image */
+  box-shadow: var(--code-shadow, 0 4px 30px rgba(0, 0, 0, 0.1));
+  backdrop-filter: var(--code-blur, blur(5px));
+  -webkit-backdrop-filter: var(--code-blur, blur(5px));
+  border: none;
+  width: 200px;
+  height: auto;
 }
 
 .home {

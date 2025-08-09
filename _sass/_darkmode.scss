@@ -1,5 +1,28 @@
 /* Dark Mode Theme Styles with 3D Elements */
 
+/* Dark Mode CSS Custom Properties for Performance */
+[data-theme="dark"] {
+  --dark-bg-primary: #0f0f23;
+  --dark-bg-secondary: #1a1a2e;
+  --dark-bg-tertiary: #16213e;
+  --dark-card-bg: rgba(31, 41, 55, 0.9);
+  --dark-card-bg-hover: rgba(31, 41, 55, 0.95);
+  --dark-card-border: rgba(99, 102, 241, 0.2);
+  --dark-card-border-hover: rgba(99, 102, 241, 0.4);
+  --dark-text-primary: #f8fafc;
+  --dark-text-secondary: #e2e8f0;
+  --dark-text-tertiary: #cbd5e1;
+  --dark-text-muted: #94a3b8;
+  --dark-text-white: #ffffff;
+  --dark-link-color: #6366f1;
+  --dark-link-hover: #93c5fd;
+  --dark-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.7);
+  --dark-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --dark-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --dark-shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.5);
+  --dark-border-subtle: rgba(99, 102, 241, 0.3);
+}
+
 /* Theme Toggle Icon Display Logic */
 .theme-toggle-icon {
   transition: transform 0.3s ease;
@@ -274,10 +297,20 @@ small {
   color: #e2e8f0;
 }
 
-/* Apply text color to spans and divs that are not inside code blocks */
-[data-theme="dark"] span:not(.highlight span):not(pre span):not(code span),
-[data-theme="dark"] div:not(.highlight div):not(pre div):not(code div) {
+/* Apply text color to spans and divs, but not inside highlight blocks */
+[data-theme="dark"] span,
+[data-theme="dark"] div {
   color: #e2e8f0;
+}
+
+/* Reset color for syntax highlighting elements to allow specific highlighting rules to work */
+[data-theme="dark"] .highlight span,
+[data-theme="dark"] .highlight div,
+[data-theme="dark"] pre span,
+[data-theme="dark"] pre div,
+[data-theme="dark"] code span,
+[data-theme="dark"] code div {
+  color: inherit;
 }
 
 [data-theme="dark"] .site-header {
@@ -331,31 +364,31 @@ small {
 }
 
 [data-theme="dark"] .post-title {
-  color: #f8fafc !important;
+  color: #f8fafc;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 [data-theme="dark"] .post-card:hover .post-title {
-  color: #ffffff !important;
+  color: #ffffff;
   text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
 
 [data-theme="dark"] .post-summary {
-  color: #cbd5e1 !important;
+  color: #cbd5e1;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 [data-theme="dark"] .post-card:hover .post-summary {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
 }
 
 [data-theme="dark"] .read-more {
-  color: #94a3b8 !important;
+  color: #94a3b8;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 [data-theme="dark"] .post-card:hover .read-more {
-  color: var(--link-color) !important;
+  color: var(--link-color);
   text-shadow: 0 0 5px currentColor;
 }
 
@@ -391,7 +424,7 @@ small {
 [data-theme="dark"] .post-content h5,
 [data-theme="dark"] .post-content h6,
 [data-theme="dark"] .post-header h1 {
-  color: #f8fafc !important;
+  color: #f8fafc;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -401,51 +434,51 @@ small {
 [data-theme="dark"] .post-content div,
 [data-theme="dark"] .post-meta,
 [data-theme="dark"] .post-summary {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
 }
 
 [data-theme="dark"] .post-content strong,
 [data-theme="dark"] .post-content b {
-  color: #ffffff !important;
+  color: #ffffff;
   font-weight: 600;
 }
 
 [data-theme="dark"] .post-content em,
 [data-theme="dark"] .post-content i {
-  color: #cbd5e1 !important;
+  color: #cbd5e1;
 }
 
 [data-theme="dark"] .post-content blockquote {
   border-left: 4px solid var(--link-color);
   background: rgba(31, 41, 55, 0.5);
-  color: #cbd5e1 !important;
+  color: #cbd5e1;
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
 }
 
 [data-theme="dark"] .post-content blockquote p {
-  color: #cbd5e1 !important;
+  color: #cbd5e1;
 }
 
 /* Dark mode post meta and small text */
 [data-theme="dark"] .post-meta,
 [data-theme="dark"] .small,
 [data-theme="dark"] small {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 
 /* Dark mode related posts */
 [data-theme="dark"] .related-post-title {
-  color: #f8fafc !important;
+  color: #f8fafc;
   border-bottom: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] .post-link .post-title {
-  color: var(--link-color) !important;
+  color: var(--link-color);
 }
 
 [data-theme="dark"] .post-link .post-title:hover {
-  color: #93c5fd !important;
+  color: #93c5fd;
 }
 
 /* Ensure all text in post content inherits proper colors */
@@ -456,30 +489,30 @@ small {
 /* Dark mode footnotes and references */
 [data-theme="dark"] .footnotes,
 [data-theme="dark"] .footnote {
-  color: #94a3b8 !important;
+  color: #94a3b8;
   border-top: 1px solid rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] .footnotes p,
 [data-theme="dark"] .footnote p {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 
 /* Dark mode comprehensive content styling */
 [data-theme="dark"] .post-content dl,
 [data-theme="dark"] .post-content dt,
 [data-theme="dark"] .post-content dd {
-  color: #e2e8f0 !important;
+  color: #e2e8f0;
 }
 
 [data-theme="dark"] .post-content dt {
   font-weight: 600;
-  color: #f8fafc !important;
+  color: #f8fafc;
 }
 
 [data-theme="dark"] .post-content kbd {
   background-color: rgba(31, 41, 55, 0.8);
-  color: #f8fafc !important;
+  color: #f8fafc;
   border: 1px solid rgba(99, 102, 241, 0.3);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
@@ -488,19 +521,19 @@ small {
 
 [data-theme="dark"] .post-content mark {
   background-color: rgba(245, 101, 101, 0.3);
-  color: #f8fafc !important;
+  color: #f8fafc;
   padding: 0.1rem 0.2rem;
 }
 
 [data-theme="dark"] .post-content abbr {
-  color: var(--link-color) !important;
+  color: var(--link-color);
   border-bottom: 1px dotted var(--link-color);
 }
 
 /* Dark mode image captions and figures */
 [data-theme="dark"] .post-content figcaption,
 [data-theme="dark"] .post-content figure {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 
 [data-theme="dark"] .post-content figure img {
@@ -525,28 +558,84 @@ small {
   color: var(--text-color);
 }
 
-/* Dark Mode Code Blocks */
+/* Dark Mode Code Blocks and Syntax Highlighting */
+
+/* Remove any inherited borders from code elements */
+[data-theme="dark"] .highlight *,
+[data-theme="dark"] .highlight pre,
+[data-theme="dark"] .highlight code,
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
-  background-color: rgba(31, 41, 55, 0.8);
-  color: #e2e8f0;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: none;
+}
+[data-theme="dark"] {
+  --code-bg-dark: rgba(31, 41, 55, 0.95);
+  --code-border-dark: rgba(99, 102, 241, 0.3);
+  --code-text-dark: #e2e8f0;
 }
 
+/* Dark mode code blocks */
+[data-theme="dark"] pre,
+[data-theme="dark"] pre code {
+  background-color: var(--code-bg-dark);
+  color: var(--code-text-dark);
+  border: none;
+}
+
+[data-theme="dark"] code {
+  background-color: var(--code-bg-dark);
+  color: var(--code-text-dark);
+  border: none;
+}
+
+/* Dark mode copy button */
+[data-theme="dark"] .code-copy-btn {
+  background: rgba(31, 41, 55, 0.9);
+  border: none;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .code-copy-btn svg {
+  stroke: currentColor;
+}
+
+[data-theme="dark"] .code-copy-btn:hover {
+  background: rgba(31, 41, 55, 1);
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .code-copy-btn.copied {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.5);
+  color: #10b981;
+}
+
+/* Dark mode highlight container */
 [data-theme="dark"] .highlight {
-  background-color: rgba(31, 41, 55, 0.9);
+  background-color: var(--code-bg-dark);
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--dark-shadow-md);
+  position: relative;
+  overflow: visible;
 }
 
-/* Preserve token colors inside code blocks in dark mode */
-[data-theme="dark"] .highlight,
-[data-theme="dark"] .highlight .w {
-  color: #e6edf3; /* default foreground */
+/* Prevent duplicate elements in dark mode */
+[data-theme="dark"] .highlight .highlight {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* Dark syntax highlighting palette (Rouge token classes) */
+/* CRITICAL: High specificity dark mode syntax highlighting - base color only for non-highlighted elements */
+[data-theme="dark"] .highlight {
+  color: #e6edf3;
+}
+
+/* Comments - Dark mode with higher specificity */
 [data-theme="dark"] .highlight .c,
 [data-theme="dark"] .highlight .ch,
 [data-theme="dark"] .highlight .cd,
@@ -554,10 +643,20 @@ small {
 [data-theme="dark"] .highlight .cp,
 [data-theme="dark"] .highlight .cpf,
 [data-theme="dark"] .highlight .c1,
-[data-theme="dark"] .highlight .cs {
-  color: #8b949e;
+[data-theme="dark"] .highlight .cs,
+[data-theme="dark"] .post .highlight .c,
+[data-theme="dark"] .post .highlight .ch,
+[data-theme="dark"] .post .highlight .cd,
+[data-theme="dark"] .post .highlight .cm,
+[data-theme="dark"] .post .highlight .cp,
+[data-theme="dark"] .post .highlight .cpf,
+[data-theme="dark"] .post .highlight .c1,
+[data-theme="dark"] .post .highlight .cs {
+  color: #8b949e !important;
   font-style: italic;
 }
+
+/* Keywords - Dark mode */
 [data-theme="dark"] .highlight .k,
 [data-theme="dark"] .highlight .kd,
 [data-theme="dark"] .highlight .kn,
@@ -566,9 +665,21 @@ small {
 [data-theme="dark"] .highlight .kt,
 [data-theme="dark"] .highlight .kv,
 [data-theme="dark"] .highlight .o,
-[data-theme="dark"] .highlight .ow {
-  color: #ff7b72; /* keywords/operators */
+[data-theme="dark"] .highlight .ow,
+[data-theme="dark"] .post .highlight .k,
+[data-theme="dark"] .post .highlight .kd,
+[data-theme="dark"] .post .highlight .kn,
+[data-theme="dark"] .post .highlight .kp,
+[data-theme="dark"] .post .highlight .kr,
+[data-theme="dark"] .post .highlight .kt,
+[data-theme="dark"] .post .highlight .kv,
+[data-theme="dark"] .post .highlight .o,
+[data-theme="dark"] .post .highlight .ow {
+  color: #ff7b72 !important;
+  font-weight: 600;
 }
+
+/* Strings - Dark mode */
 [data-theme="dark"] .highlight .s,
 [data-theme="dark"] .highlight .sa,
 [data-theme="dark"] .highlight .sc,
@@ -579,9 +690,22 @@ small {
 [data-theme="dark"] .highlight .sh,
 [data-theme="dark"] .highlight .sx,
 [data-theme="dark"] .highlight .s1,
-[data-theme="dark"] .highlight .ss {
-  color: #a5d6ff; /* strings */
+[data-theme="dark"] .highlight .ss,
+[data-theme="dark"] .post .highlight .s,
+[data-theme="dark"] .post .highlight .sa,
+[data-theme="dark"] .post .highlight .sc,
+[data-theme="dark"] .post .highlight .dl,
+[data-theme="dark"] .post .highlight .sd,
+[data-theme="dark"] .post .highlight .s2,
+[data-theme="dark"] .post .highlight .se,
+[data-theme="dark"] .post .highlight .sh,
+[data-theme="dark"] .post .highlight .sx,
+[data-theme="dark"] .post .highlight .s1,
+[data-theme="dark"] .post .highlight .ss {
+  color: #a5d6ff !important;
 }
+
+/* Numbers - Dark mode */
 [data-theme="dark"] .highlight .m,
 [data-theme="dark"] .highlight .mb,
 [data-theme="dark"] .highlight .mf,
@@ -591,22 +715,41 @@ small {
 [data-theme="dark"] .highlight .mo,
 [data-theme="dark"] .highlight .mx,
 [data-theme="dark"] .highlight .l,
-[data-theme="dark"] .highlight .ld {
-  color: #79c0ff; /* numbers/literals */
+[data-theme="dark"] .highlight .ld,
+[data-theme="dark"] .post .highlight .m,
+[data-theme="dark"] .post .highlight .mb,
+[data-theme="dark"] .post .highlight .mf,
+[data-theme="dark"] .post .highlight .mh,
+[data-theme="dark"] .post .highlight .mi,
+[data-theme="dark"] .post .highlight .il,
+[data-theme="dark"] .post .highlight .mo,
+[data-theme="dark"] .post .highlight .mx,
+[data-theme="dark"] .post .highlight .l,
+[data-theme="dark"] .post .highlight .ld {
+  color: #79c0ff !important;
 }
+
+/* Functions and names - Dark mode */
+[data-theme="dark"] .highlight .nf,
+[data-theme="dark"] .highlight .nd,
+[data-theme="dark"] .highlight .fm,
+[data-theme="dark"] .post .highlight .nf,
+[data-theme="dark"] .post .highlight .nd,
+[data-theme="dark"] .post .highlight .fm {
+  color: #d2a8ff !important;
+}
+
+/* Variables and attributes - Dark mode */
 [data-theme="dark"] .highlight .na,
 [data-theme="dark"] .highlight .nt,
-[data-theme="dark"] .highlight .sr {
-  color: #7ee787; /* attributes/tags/regex */
+[data-theme="dark"] .highlight .sr,
+[data-theme="dark"] .post .highlight .na,
+[data-theme="dark"] .post .highlight .nt,
+[data-theme="dark"] .post .highlight .sr {
+  color: #7ee787 !important;
 }
-[data-theme="dark"] .highlight .nd,
-[data-theme="dark"] .highlight .nf,
-[data-theme="dark"] .highlight .fm {
-  color: #d2a8ff; /* functions/decorators */
-}
-[data-theme="dark"] .highlight .n {
-  color: #c9d1d9; /* general names */
-}
+
+/* Builtins - Dark mode */
 [data-theme="dark"] .highlight .nb,
 [data-theme="dark"] .highlight .bp,
 [data-theme="dark"] .highlight .ne,
@@ -620,23 +763,30 @@ small {
 [data-theme="dark"] .highlight .nc,
 [data-theme="dark"] .highlight .nn,
 [data-theme="dark"] .highlight .no,
-[data-theme="dark"] .highlight .kc {
-  color: #ffa657; /* builtins/types/constants/vars */
+[data-theme="dark"] .highlight .kc,
+[data-theme="dark"] .post .highlight .nb,
+[data-theme="dark"] .post .highlight .bp,
+[data-theme="dark"] .post .highlight .ne,
+[data-theme="dark"] .post .highlight .nl,
+[data-theme="dark"] .post .highlight .py,
+[data-theme="dark"] .post .highlight .nv,
+[data-theme="dark"] .post .highlight .vc,
+[data-theme="dark"] .post .highlight .vg,
+[data-theme="dark"] .post .highlight .vi,
+[data-theme="dark"] .post .highlight .vm,
+[data-theme="dark"] .post .highlight .nc,
+[data-theme="dark"] .post .highlight .nn,
+[data-theme="dark"] .post .highlight .no,
+[data-theme="dark"] .post .highlight .kc {
+  color: #ffa657 !important;
 }
-[data-theme="dark"] .highlight .p {
-  color: #c9d1d9; /* punctuation */
-}
-[data-theme="dark"] .highlight .gi {
-  color: #7ee787;
-  background-color: rgba(46, 160, 67, 0.15);
-}
-[data-theme="dark"] .highlight .gd {
-  color: #ff7b72;
-  background-color: rgba(248, 81, 73, 0.15);
-}
-[data-theme="dark"] .highlight .err {
-  color: #ffffff;
-  background-color: #8e1519;
+
+/* General names and punctuation - Dark mode */
+[data-theme="dark"] .highlight .n,
+[data-theme="dark"] .highlight .p,
+[data-theme="dark"] .post .highlight .n,
+[data-theme="dark"] .post .highlight .p {
+  color: #c9d1d9;
 }
 
 /* Dark mode list styling */
@@ -790,15 +940,15 @@ small {
   transform: translateY(-12px) scale(1.03) rotateX(5deg);
 }
 
-/* Accessibility: Reduced motion support */
+/* Accessibility: Reduced motion support for better performance */
 @media (prefers-reduced-motion: reduce) {
   .floating-element,
   .shape,
   .theme-toggle,
   .post-card {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
+    animation: none;
+    transition: none;
+    transform: none;
   }
   
   .bg-3d {

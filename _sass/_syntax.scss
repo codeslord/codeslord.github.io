@@ -1,40 +1,139 @@
-/* Rouge syntax highlighting (GitHub-like) */
+/* Optimized Rouge Syntax Highlighting (GitHub-like Light Theme) */
 .highlight {
   color: #24292e;
+  background: transparent;
 }
 
-/* Comments */
-.highlight .c, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs {
+/* Remove any inherited borders from code elements */
+.highlight *,
+.highlight pre,
+.highlight code,
+pre,
+code {
+  border: none;
+}
+
+/* Light mode code blocks */
+.highlight pre,
+.highlight code {
+  background-color: var(--code-bg-light);
+  border: none;
+}
+
+/* Comments - grouped for better performance */
+.highlight .c,
+.highlight .cm,
+.highlight .cp,
+.highlight .c1,
+.highlight .cs,
+.highlight .ch,
+.highlight .cd,
+.highlight .cpf {
   color: #6a737d;
   font-style: italic;
 }
 
-/* Keywords, operators */
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .o, .highlight .ow {
+/* Keywords and operators - grouped */
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kv,
+.highlight .o,
+.highlight .ow {
   color: #d73a49;
+  font-weight: 600;
 }
 
-/* Names */
-.highlight .n { color: #24292e; }
-.highlight .nb { color: #005cc5; } /* builtins */
-.highlight .nc, .highlight .nn, .highlight .ne { color: #6f42c1; } /* class/namespace */
-.highlight .nf, .highlight .nt { color: #6f42c1; } /* function/tag */
-.highlight .na { color: #6f42c1; }
-.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi { color: #24292e; }
-.highlight .bp { color: #e36209; } /* self/this */
+/* Names and identifiers */
+.highlight .n { 
+  color: #24292e; 
+}
 
-/* Literals */
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo { color: #005cc5; }
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s1, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sr, .highlight .ss { color: #032f62; }
-.highlight .kc, .highlight .kc, .highlight .kc { color: #005cc5; }
+.highlight .nb,
+.highlight .bp { 
+  color: #005cc5; 
+  font-weight: 600;
+}
+
+.highlight .nc,
+.highlight .nn,
+.highlight .ne,
+.highlight .nf,
+.highlight .nt,
+.highlight .na { 
+  color: #6f42c1; 
+  font-weight: 600;
+}
+
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { 
+  color: #24292e; 
+}
+
+/* Literals - grouped for performance */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .il,
+.highlight .mo,
+.highlight .kc { 
+  color: #005cc5; 
+  font-weight: 600;
+}
+
+/* Strings - grouped */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s1,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sr,
+.highlight .ss { 
+  color: #032f62; 
+  font-weight: 500;
+}
 
 /* Punctuation */
-.highlight .p { color: inherit; }
+.highlight .p { 
+  color: #24292e; 
+}
 
-/* Diff additions/deletions (if any) */
-.highlight .gi { color: #22863a; background-color: #f0fff4; }
-.highlight .gd { color: #b31d28; background-color: #ffeef0; }
+/* Diff colors for version control */
+.highlight .gi { 
+  color: #22863a; 
+  background-color: #f0fff4; 
+  font-weight: 600;
+}
 
-/* Emphasis */
-.highlight .ge { font-style: italic; }
-.highlight .gs { font-weight: 600; }
+.highlight .gd { 
+  color: #b31d28; 
+  background-color: #ffeef0; 
+  font-weight: 600;
+}
+
+/* Text formatting */
+.highlight .ge { 
+  font-style: italic; 
+}
+
+.highlight .gs { 
+  font-weight: 700; 
+}
+
+/* Error highlighting */
+.highlight .err {
+  color: #b31d28;
+  background-color: #ffeef0;
+}

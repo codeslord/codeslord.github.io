@@ -15,9 +15,9 @@ html {
 /* Remove focus outline from post cards specifically */
 .post-card *:focus,
 .post-link-wrapper:focus {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* Enhanced glassmorphic effect for better visibility */
@@ -142,7 +142,7 @@ html {
   }
 }
 
-/* Reduce motion for accessibility */
+/* Reduce motion for accessibility and improve performance */
 @media (prefers-reduced-motion: reduce) {
   .post-card {
     animation: none;
@@ -157,9 +157,9 @@ html {
   }
   
   * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
   }
 }
 

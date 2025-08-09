@@ -1,4 +1,40 @@
-// Typography
+/* CSS Custom Properties for Better Performance */
+:root {
+  --base-font-size: 16px;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --monospace-font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  --line-height: 1.6;
+  --heading-line-height: 1.25;
+  --bold-font-weight: 600;
+  --heading-font-weight: 700;
+  
+  --blue: #0076df;
+  --red: #f95020;
+  --green: #00cf26;
+  --yellow: #efcc00;
+  --orange: #ffcc22;
+  --purple: #f92080;
+  --dark-blue: #00369f;
+  --dark-green: #009f06;
+  --dark-gray: #333;
+  --mid-gray: #777;
+  --light-gray: #ccc;
+  --lighter-gray: #eee;
+  
+  --link-color: var(--blue);
+  --link-hover-color: #00369f;
+  
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 4rem;
+  
+  --border-radius: 3px;
+  --border-width: 1px;
+  --measure-width: 75rem;
+}
+
+// Typography - keeping SCSS variables for compatibility
 $base-font-size: 16px !default;
 $bold-font-weight: 600 !default;
 $font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !default;
