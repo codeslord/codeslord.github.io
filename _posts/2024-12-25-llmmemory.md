@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Cognitive Architecture of LLMs - A Synthesis of Memory, Reasoning, and Agency
-date: 2025-12-25 17:30
+date: 2024-12-25 17:30
 summary: Without a unified and structured architecture for handling memory, LLMs cannot "accumulate experience," "retain memory," and "continuously evolve" in the way biological organisms do. While nascent methods like Retrieval-Augmented Generation (RAG) have begun to graft on explicit, plaintext memory, they often lack sophisticated lifecycle management and are treated as add-ons rather than as integral parts of the cognitive architecture. This limitation prevents the development of robust long-context reasoning, continual personalization, and knowledge consistency across tasks and platforms. As AI systems are increasingly deployed in complex, dynamic environments characterized by multi-tasking, multi-agent collaboration, and multi-modal information streams, the need for models to retain, update, and leverage prior knowledge becomes paramount.
 categories: General
 ---
