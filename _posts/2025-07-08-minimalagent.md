@@ -220,13 +220,13 @@ if response.choices[^0].message.tool_calls:
 
 ```mermaid
 graph LR
-    USER --> AGENT
-    AGENT --> LLM
-    LLM --> Decision{Tool Call?}
-    Decision -->|Yes| TOOL
-    Decision -->|No| Response
-    TOOL --> Response
-    Response --> USER
+    A[USER] --> B[AGENT]
+    B --> C[LLM]
+    C --> D{Tool Call?}
+    D -->|Yes| E[TOOL]
+    D -->|No| F[Response]
+    E --> F
+    F --> A
 ```
 
 
