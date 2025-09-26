@@ -44,14 +44,14 @@ def run_agent(prompt):
         tools=tools
     )
     
-    if response.choices[^0].message.tool_calls:
-        for tool_call in response.choices[^0].message.tool_calls:
+    if response.choices[0].message.tool_calls:
+        for tool_call in response.choices[0].message.tool_calls:
             if tool_call.function.name == "get_weather":
                 args = json.loads(tool_call.function.arguments)
                 result = weather_tool(args["city"])
                 print(f"Tool result: {result}")
     
-    return response.choices[^0].message.content
+    return response.choices[0].message.content
 ```
 
 
@@ -99,7 +99,7 @@ def agent_loop(prompt):
     
     while True:
         response = client.chat.completions.create(model="gpt-4", messages=messages)
-        message = response.choices[^0].message
+        message = response.choices[0].message
         messages.append({"role": "assistant", "content": message.content})
         
         if not message.tool_calls:
@@ -205,8 +205,8 @@ import json        # For parsing args
 
 ```python
 
-if response.choices[^0].message.tool_calls:
-    for tool_call in response.choices[^0].message.tool_calls:
+if response.choices[0].message.tool_calls:
+    for tool_call in response.choices[0].message.tool_calls:
         # Always: name → args → execute
         name = tool_call.function.name
         args = json.loads(tool_call.function.arguments)
@@ -330,7 +330,7 @@ Always: `[{"role": "user", "content": "..."}]`
 OPENAI PATTERN:
 ├─ tools = [{"type": "function", "function": {...}}]
 ├─ response = client.chat.completions.create(...)
-└─ if response.choices[^0].message.tool_calls:
+└─ if response.choices[0].message.tool_calls:
 
 MCP PATTERN:  
 ├─ from mcp.server.fastmcp import FastMCP
