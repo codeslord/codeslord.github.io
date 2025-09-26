@@ -47,7 +47,7 @@ code {
 }
 
 pre {
-  padding: 1.125em 3rem 1.125em 1.125em; /* Add right padding for copy button */
+  padding: 1.125em 2.5rem 1.125em 1.125em; /* Reduced right padding for copy button */
   line-height: 1.4;
   overflow-x: auto;
   margin-bottom: 0.88em;
@@ -69,12 +69,12 @@ pre {
 /* Copy button styling */
 .code-copy-btn {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 6px;
-  padding: 0.5rem;
+  padding: 0.4rem;
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -87,8 +87,8 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .code-copy-btn svg {

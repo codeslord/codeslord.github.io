@@ -89,7 +89,6 @@ result = Runner.run_sync(agent, "What's the weather in Tokyo?")
 ## **4. Ultra Minimal Loop**
 
 ```python
-
 import openai
 
 client = openai.OpenAI()
