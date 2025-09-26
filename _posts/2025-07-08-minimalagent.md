@@ -13,6 +13,7 @@ Here's the most **bare minimum** Python code for AI Agents with tool calling and
 ## **1. OpenAI Agent (Simplest)**
 
 ```python
+
 import openai
 import json
 
@@ -57,6 +58,7 @@ def run_agent(prompt):
 ## **2. MCP Server (3 Lines Core)**
 
 ```python
+
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("Demo")
@@ -72,6 +74,7 @@ def add(a: int, b: int) -> int:
 ## **3. OpenAI Agents SDK (Newest - 4 Lines)**
 
 ```python
+
 from agents import Agent, Runner, function_tool
 
 @function_tool
@@ -86,6 +89,7 @@ result = Runner.run_sync(agent, "What's the weather in Tokyo?")
 ## **4. Ultra Minimal Loop**
 
 ```python
+
 import openai
 
 client = openai.OpenAI()
@@ -178,6 +182,7 @@ import json        # For parsing args
 ### **Tool Schema Template** (OpenAI)
 
 ```python
+
 {
     "type": "function",
     "function": {
@@ -197,6 +202,7 @@ import json        # For parsing args
 ### **Response Handling Pattern**
 
 ```python
+
 if response.choices[^0].message.tool_calls:
     for tool_call in response.choices[^0].message.tool_calls:
         # Always: name → args → execute
@@ -229,6 +235,7 @@ USER → [AGENT] → LLM → Tool Call?
 ### **10-Second OpenAI Agent** (Core Template)
 
 ```python
+
 import openai, json
 client = openai.OpenAI()
 tools = [{"type": "function", "function": {"name": "X", "parameters": {...}}}]
@@ -239,6 +246,7 @@ response = client.chat.completions.create(model="gpt-4", messages=[...], tools=t
 ### **5-Second MCP Server**
 
 ```python
+
 from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("Name")
 @mcp.tool()
@@ -262,6 +270,7 @@ Set a timer and write a basic agent from memory in 30 seconds. Focus on:
 Practice with templates like:
 
 ```python
+
 import _____, _____
 client = _____.OpenAI()
 tools = [{"type": "_____", "_____": {...}}]
