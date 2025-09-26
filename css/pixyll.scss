@@ -54,3 +54,14 @@
 @import 'icons';
 @import 'darkmode';
 @import 'performance-optimizations';
+/* Mermaid diagram styles */
+.mermaid {
+  text-align: center;
+  margin: 1em 0;
+  background: transparent;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

@@ -89,6 +89,7 @@ result = Runner.run_sync(agent, "What's the weather in Tokyo?")
 ## **4. Ultra Minimal Loop**
 
 ```python
+
 import openai
 
 client = openai.OpenAI()
@@ -109,6 +110,7 @@ def agent_loop(prompt):
 ## **Key Installation Commands**
 
 ```bash
+
 pip install openai           # OpenAI
 pip install anthropic        # Anthropic  
 pip install "mcp[cli]"       # MCP
@@ -173,6 +175,7 @@ Tools are always wrapped in JSON schemas:
 ### **Essential Imports Block**
 
 ```python
+
 import openai      # Always openai
 import json        # For parsing args
 ```
@@ -215,10 +218,15 @@ if response.choices[^0].message.tool_calls:
 
 ### **Agent Flow Diagram** (Mental Picture)
 
-```
-USER → [AGENT] → LLM → Tool Call? 
-                  ↓      ↓ Yes
-               Response ← TOOL
+```mermaid
+graph LR
+    USER --> AGENT
+    AGENT --> LLM
+    LLM --> Decision{Tool Call?}
+    Decision -->|Yes| TOOL
+    Decision -->|No| Response
+    TOOL --> Response
+    Response --> USER
 ```
 
 
