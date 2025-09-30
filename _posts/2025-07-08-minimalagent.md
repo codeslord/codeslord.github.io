@@ -8,50 +8,44 @@ categories: General
 
 <img src="https://i.ibb.co/ch83rmhK/blog-post.jpg" alt="memorizeagent" border="0">
 
-Here's the most **bare minimum** Python code for AI Agents with tool calling and MCP support that you can remember without needing ChatGPT:
+Here's the most **bare minimum** Python code for AI Agents loop with tool calling and MCP support that you can remember without needing ChatGPT:
 
 ## **1. OpenAI Agent (Simplest)**
 
 ```python
 
-import openai
-import json
+import openai, json
 
 client = openai.OpenAI()
+messages = [{"role": "user", "content": "What’s the weather in London?"}]
 
-def weather_tool(city: str):
-    return f"Weather in {city}: 22°C, sunny"
-
-def run_agent(prompt):
-    tools = [{
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": "Get weather for a city",
-            "parameters": {
-                "type": "object",
-                "properties": {"city": {"type": "string"}},
-                "required": ["city"]
-            }
-        }
-    }]
-    
-    messages = [{"role": "user", "content": prompt}]
-    
+while True:
     response = client.chat.completions.create(
         model="gpt-4",
         messages=messages,
-        tools=tools
+        tools=[{
+            "type": "function",
+            "function": {
+                "name": "get_weather",
+                "description": "Get weather by city",
+                "parameters": {
+                    "type": "object",
+                    "properties": {"city": {"type": "string"}},
+                    "required": ["city"]
+                }
+            }
+        }]
     )
+    msg = response.choices[0].message
+    if not msg.tool_calls:
+        print(msg.content); break
+    for call in msg.tool_calls:
+        args = json.loads(call.function.arguments)
+        tool_response = f"Weather in {args['city']}: sunny, 22°C"
+        messages.append({"role": "tool", "content": tool_response, "tool_call_id": call.id})
+    messages.append({"role": "assistant", "content": msg.content})
     
-    if response.choices[0].message.tool_calls:
-        for tool_call in response.choices[0].message.tool_calls:
-            if tool_call.function.name == "get_weather":
-                args = json.loads(tool_call.function.arguments)
-                result = weather_tool(args["city"])
-                print(f"Tool result: {result}")
-    
-    return response.choices[0].message.content
+
 ```
 
 
